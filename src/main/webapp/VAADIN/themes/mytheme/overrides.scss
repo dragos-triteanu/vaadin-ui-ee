@@ -1,0 +1,19 @@
+@mixin overrides {
+
+  .v-button, .v-button-wrap{
+    color: whitesmoke;
+    background: #c0392b;
+    border: none;
+  }
+
+  .v-mandatory-field {
+    background: yellow;
+    background-color: yellow;
+  }
+
+  .v-icon{
+    font-size: 15px;
+  }
+
+  // Insert your own theme rules here
+}
