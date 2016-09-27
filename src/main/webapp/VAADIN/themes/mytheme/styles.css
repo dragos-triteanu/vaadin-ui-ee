@@ -12982,3 +12982,39 @@ div.v-layout.v-horizontal.v-widget {
 .mytheme .v-icon {
 	font-size: 15px;
 }
+
+.mytheme .v-gray-bordered {
+	border: 1px solid lightgray;
+}
+
+.mytheme .v-gray-background {
+	background: gray;
+}
+
+.mytheme .v-panel-content > div {
+	background: gray;
+}
+
+.mytheme .v-panel .v-panel-content-desktop {
+	background: gray;
+}
+
+.mytheme .v-left-margined {
+	margin-left: 5%;
+}
+
+.mytheme .v-gridlayout-gridexample div {
+	background-color: red;
+}
+
+.mytheme .v-gridlayout-gridexample div div div {
+	background-color: white;
+}
+
+.mytheme .v-green-checker input:checked + label::before {
+	color: green;
+}
+
+.mytheme .v-green-checker input:checked + label::after {
+	color: green;
+}

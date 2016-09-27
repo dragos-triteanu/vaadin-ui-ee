@@ -1,6 +1,6 @@
 @mixin overrides {
 
-  .v-button, .v-button-wrap{
+  .v-button, .v-button-wrap {
     color: whitesmoke;
     background: #c0392b;
     border: none;
@@ -11,8 +11,36 @@
     background-color: yellow;
   }
 
-  .v-icon{
+  .v-icon {
     font-size: 15px;
+  }
+
+  .v-gray-bordered {
+    border: 1px solid lightgray;
+  }
+
+  .v-gray-background {
+    background: gray;
+  }
+
+  .v-panel-content > div {
+    background: gray;
+  }
+
+  .v-panel .v-panel-content-desktop {
+    background: gray;
+  }
+
+  .v-left-margined{
+    margin-left: 5%;
+  }
+
+  .v-gridlayout-gridexample div{
+    background-color: red;
+  }
+
+  .v-gridlayout-gridexample div div div {
+    background-color: white;
   }
 
   // Insert your own theme rules here
