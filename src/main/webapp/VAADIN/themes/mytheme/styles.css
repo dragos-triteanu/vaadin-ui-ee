@@ -13004,17 +13004,9 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .mytheme .v-gridlayout-gridexample div {
-	background-color: red;
+	background-color: lightgray;
 }
 
-.mytheme .v-gridlayout-gridexample div div div {
-	background-color: white;
-}
-
-.mytheme .v-green-checker input:checked + label::before {
-	color: green;
-}
-
-.mytheme .v-green-checker input:checked + label::after {
+.mytheme .v-checkbox > input:checked {
 	color: green;
 }

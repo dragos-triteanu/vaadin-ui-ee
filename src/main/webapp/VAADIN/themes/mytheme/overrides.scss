@@ -31,16 +31,16 @@
     background: gray;
   }
 
-  .v-left-margined{
+  .v-left-margined {
     margin-left: 5%;
   }
 
-  .v-gridlayout-gridexample div{
-    background-color: red;
+  .v-gridlayout-gridexample div {
+    background-color: lightgray;
   }
 
-  .v-gridlayout-gridexample div div div {
-    background-color: white;
+  .v-checkbox > input:checked  {
+    color: green;
   }
 
   // Insert your own theme rules here
