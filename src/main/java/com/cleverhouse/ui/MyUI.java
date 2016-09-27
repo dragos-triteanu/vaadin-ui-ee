@@ -112,6 +112,9 @@ public class MyUI extends UI {
 
         CustomLayout loginLayout = buildLoginLayout();
 
+        CustomLayout complexLayout = buildComplexLayout();
+
+
         layout.addComponent(textField);
         layout.addComponent(dateField);
         layout.addComponent(numberField);
@@ -127,8 +130,25 @@ public class MyUI extends UI {
         layout.addComponent(new Label("Grid example"));
         addGrid(layout);
         layout.addComponent(loginLayout);
+        layout.addComponent(complexLayout);
         setContent(layout);
     }
+
+    private CustomLayout buildComplexLayout() {
+        CustomLayout complexFormLayout = new CustomLayout("complexFormLayout");
+        complexFormLayout.addStyleName("v-gray-bordered");
+
+        complexFormLayout.addComponent(new TextField(), "username");
+        complexFormLayout.addComponent(new TextField(), "password");
+        complexFormLayout.addComponent(new Button("Login"), "okbutton");
+        complexFormLayout.addComponent(new TextField(), "l1");
+        complexFormLayout.addComponent(new TextField(), "l2");
+        complexFormLayout.addComponent(new Button("Other"), "l3");
+
+        complexFormLayout.setSizeUndefined();
+        return complexFormLayout;
+    }
+
 
     private CustomLayout buildLoginLayout() {
         CustomLayout loginLayout = new CustomLayout("loginLayout");
