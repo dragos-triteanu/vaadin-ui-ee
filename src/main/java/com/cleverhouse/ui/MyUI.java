@@ -158,7 +158,6 @@ public class MyUI extends UI {
 		hl.addComponent(d);
 		hl.setSpacing(true);
 		hl.setCaption("Toolbar");
-		hl.addStyle("toolbar");
 		layout.addComponent(hl);
         setContent(layout);
     }
