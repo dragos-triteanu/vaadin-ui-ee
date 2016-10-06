@@ -4,6 +4,7 @@ import javax.servlet.annotation.WebServlet;
 
 import com.cleverhouse.model.SomeData;
 import com.cleverhouse.service.SomeService;
+import java.util.Random;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.data.util.BeanItemContainer;
@@ -11,6 +12,7 @@ import com.vaadin.server.FontAwesome;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.*;
+import com.vaadin.server.ThemeResource;
 
 import java.util.Date;
 
@@ -127,6 +129,37 @@ public class MyUI extends UI {
         layout.addComponent(new Label("Grid example"));
         addGrid(layout);
         layout.addComponent(loginLayout);
+		
+		// NEW 161004
+		
+		TextArea area = new TextArea("Big Area");
+		area.setValue("A row\n"+
+              "Another row\n"+
+              "Yet another row"+
+			  "Another row\n"+
+			  "Another row\n"+"Another row\n"+"Another row\n"+"Another row\n"+"Another row\n"+"Another row\n");
+			  
+		area.setHeight("150px");	
+		area.setWidth("150px");	
+		layout.addComponent(area);
+		HorizontalLayout hl = new HorizontalLayout();
+		hl.setWidth("-1px");
+		Button a = new Button();
+		Button b = new Button();
+		Button c = new Button();
+		Button d = new Button();
+		a.setIcon(new ThemeResource("icons/save.gif"));
+		b.setIcon(new ThemeResource("icons/saveAll.gif"));
+		c.setIcon(new ThemeResource("icons/saveAndPrint.gif"));
+		d.setIcon(new ThemeResource("icons/saveAs.gif"));
+		hl.addComponent(a);
+		hl.addComponent(b);
+		hl.addComponent(c);
+		hl.addComponent(d);
+		hl.setSpacing(true);
+		hl.setCaption("Toolbar");
+		hl.addStyle("toolbar");
+		layout.addComponent(hl);
         setContent(layout);
     }
 
@@ -147,7 +180,54 @@ public class MyUI extends UI {
         grid.setContainerDataSource(new BeanItemContainer<>(SomeData.class, service.spamData(7)));
         layout.addComponent(grid);
     }
-
+	// NEW 161004
+	private int makeTree(Tree tree,int i,int k) {	
+		String [] icon = new String[]{		
+"boxausschluss.gif",
+"boxausschlussmonitored.gif",
+"boxausschlussmonitored_new.gif",
+"boxausschluss_new.gif",
+"boxgewaehlt.gif",
+"boxgewaehltmonitored.gif",
+"boxgewaehltmonitored_gray.gif",
+"boxgewaehltmonitored_new.gif",
+"boxgewaehltmonitored_new_gray.gif",
+"boxgewaehlt_gray.gif",
+"boxgewaehlt_new.gif",
+"boxgewaehlt_new_gray.gif",
+"boxleer.gif",
+"boxleermonitored.gif",
+"boxleermonitored_new.gif",
+"boxleer_gray.gif",
+"boxleer_new.gif",
+"boxobligmonitored.gif",
+"boxobligmonitored_en.gif",
+"boxobligmonitored_en_gray.gif",
+"boxobligmonitored_gray.gif",
+"boxobligmonitored_new.gif",
+"boxobligmonitored_new_en.gif",
+"boxobligmonitored_new_en_gray.gif",
+"boxobligmonitored_new_gray.gif",
+"boxoblig_en.gif",
+"boxoblig_en_gray.gif",
+"boxoblig_gray.gif",
+"boxoblig_new.gif",
+"boxoblig_new_en.gif",
+"boxoblig_new_en_gray.gif",
+"boxoblig_new_gray.gif"
+		};
+		Random rnd = new Random();
+		tree.setChildrenAllowed(i,(k<3?true:false));
+		tree.setItemCaption(i, "Component " + i);	
+		if (k < 3)
+		for (int j = 1; j < 10;j++){
+			int id = makeTree(tree,i*10+j,k+1);
+			tree.addItem(id);
+			tree.setParent(id,i);			
+			tree.setItemIcon(id,new ThemeResource("icons/"+icon[rnd.nextInt(32)]));
+		}		
+		return i;
+	}
     private VerticalLayout buildLeftLayout() {
         final VerticalLayout leftLayout = new VerticalLayout();
         leftLayout.setWidth("50%");
@@ -166,25 +246,33 @@ public class MyUI extends UI {
                 "Ohne Titel nur text (neu) 2",
                 "Ohne Titel nur text (neu) 3",
                 "Ohne Titel nur text (neu) 4");
+			// NEW 161004	
+		  final Tree tree = new Tree();
 
-        CheckBox checkbox1 = new CheckBox("Cobertura di base", true);
+        for (int i = 0; i < 10; i++) { // 10*10 elements
+            tree.addItem(makeTree(tree,i,0));
+        }
+        
+     
+
+        final CheckBox checkbox1 = new CheckBox("Cobertura di base", true);
         checkbox1.addStyleName("v-green-checker");
-        CheckBox checkbox2 = new CheckBox("Ohne Titel nur text (neu)", true);
+        final CheckBox checkbox2 = new CheckBox("Ohne Titel nur text (neu)", true);
         checkbox2.addStyleName("v-green-checker");
-        CheckBox checkbox3 = new CheckBox("Somme di Assicurazione (OCC)", true);
+        final CheckBox checkbox3 = new CheckBox("Somme di Assicurazione (OCC)", true);
         checkbox3.addStyleName("v-green-checker");
-        CheckBox checkbox4 = new CheckBox("Limiti per CC", true);
+        final CheckBox checkbox4 = new CheckBox("Limiti per CC", true);
         checkbox4.addStyleName("v-green-checker");
-        CheckBox checkbox5 = new CheckBox("Franchigie", true);
-        CheckBox checkbox6 = new CheckBox("Premi", true);
-        CheckBox checkbox7 = new CheckBox("Exclusioni generali");
-        CheckBox checkbox8 = new CheckBox("Partecipazione all'eccedenza di premio (Domestic)");
-        CheckBox checkbox9 = new CheckBox("Selezione destinatari copie");
+        final CheckBox checkbox5 = new CheckBox("Franchigie", true);
+        final CheckBox checkbox6 = new CheckBox("Premi", true);
+        final CheckBox checkbox7 = new CheckBox("Exclusioni generali");
+        final CheckBox checkbox8 = new CheckBox("Partecipazione all'eccedenza di premio (Domestic)");
+        final CheckBox checkbox9 = new CheckBox("Selezione destinatari copie");
 
         leftLayout.addComponents(firstTextField, secondTextField, thirdTextField);
-        leftLayout.addComponents(options, checkbox1, checkbox2, checkbox3, checkbox4, checkbox5, checkbox6, checkbox7, checkbox8, checkbox9);
+        // leftLayout.addComponents(options, checkbox1, checkbox2, checkbox3, checkbox4, checkbox5, checkbox6, checkbox7, checkbox8, checkbox9);
+		   leftLayout.addComponent(tree);
         return leftLayout;
-
 
 
 
