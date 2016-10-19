@@ -1,47 +1,186 @@
 @mixin overrides {
 
-  .v-button, .v-button-wrap {
-    color: whitesmoke;
-    background: #c0392b;
+  $button_width: 240px;
+  $button_height: 40px;
+
+  $label_width: 240px;
+  $label_height: 22px;
+
+  $combobox_width: 240px;
+  $combobox_height: 30px;
+
+  $label_normal_color: #34657f;
+  $label_grayedout_color: #eaeaea;
+  $success-button-color: #51ba74;
+  $danger-button-color: #cc7252;
+  $primary-button-color: #34657f;
+  $grayedout-button-color: #eaeaea;
+
+  .button-common {
+    width: $button_width;
+    height: $button_height;
+    border-radius: 4px;
     border: none;
+    font-family: OpenSans;
+    font-size: 16px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    text-align: center;
+    color: #ffffff;
   }
 
-  .v-mandatory-field {
-    background: yellow;
-    background-color: yellow;
+  .label-common {
+    width: $label_width !important;
+    height: $label_height;
+    font-family: OpenSans;
+    font-size: 16px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    border-bottom: 1px solid #eaeaea;
   }
 
-  .v-icon {
-    font-size: 15px;
+  .combobox-common {
+    width: $combobox_width;
+    height: $combobox_height;
+    margin-top: -2px;
+    border-bottom: 1px solid #eaeaea;
   }
 
-  .v-gray-bordered {
-    border: 1px solid lightgray;
+  .combobox-caption-common {
+    width: 148px;
+    height: 22px;
+    font-family: OpenSans;
+    font-size: 16px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
   }
 
-  .v-gray-background {
-    background: gray;
+  .combobox-item-common {
+    font-family: OpenSans;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
   }
 
-  .v-panel-content > div {
-    background: gray;
+  .v-button.v-button-success {
+    @extend .button-common;
+    background: $success-button-color;
   }
 
-  .v-panel .v-panel-content-desktop {
-    background: gray;
+  .v-button.v-button-danger {
+    @extend .button-common;
+    background: $danger-button-color;
   }
 
-  .v-left-margined {
-    margin-left: 5%;
+  .v-button.v-button-primary {
+    @extend .button-common;
+    background: $primary-button-color;
   }
 
-  .v-gridlayout-gridexample div {
-    background-color: lightgray;
+  .v-button.v-button-grayedout {
+    @extend .button-common;
+    background: $grayedout-button-color;
   }
 
-  .v-checkbox > input:checked  {
-    color: green;
+  .v-label.v-label-normal {
+    @extend .label-common;
+    color: $label_normal_color;
   }
+
+  .v-label.v-label-grayedout {
+    @extend .label-common;
+    color: $label_grayedout_color;
+  }
+
+  .v-combobox-normal {
+    @extend .combobox-common;
+    border-bottom: 1px solid #eaeaea;
+    margin-top: 0px;
+  }
+
+  .v-filterselect-suggestpopup .gwt-MenuItem-selected {
+    @extend .combobox-item-common;
+    background: #34657f !important;
+  }
+
+  .v-filterselect-suggestpopup .gwt-MenuItem {
+    @extend .combobox-item-common;
+    color: #7e8081;
+  }
+
+  .v-filterselect-suggestpopup .gwt-MenuItem:hover{
+    color: white;
+  }
+
+  .v-combobox-normal .v-filterselect-input {
+    font-family: OpenSans;
+    padding: 0px 0px 0px 1px;
+    margin: 0px;
+    width: 148px;
+    height: 22px;
+    font-family: OpenSans;
+    font-size: 16px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    color: #34657f;
+  }
+
+  .v-caption-v-combobox-normal {
+    width: 93px;
+    height: 14px;
+    font-family: OpenSans;
+    font-size: 10px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    margin-bottom: 0px !important;
+    padding-bottom: 0px !important;
+    color: #7e8081;
+  }
+
+  .v-caption-v-combobox-gray {
+    width: 93px;
+    height: 14px;
+    font-family: OpenSans;
+    font-size: 10px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    margin-bottom: 0px !important;
+    padding-bottom: 0px !important;
+    color: #34657f;
+  }
+
+  .v-combobox-gray .v-filterselect-input {
+    font-family: OpenSans;
+    padding: 0px 0px 0px 1px;
+    margin: 0px;
+    width: 148px;
+    height: 22px;
+    font-family: OpenSans;
+    font-size: 16px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    color: #7e8081;
+  }
+
+  .v-filterselect-v-combobox-normal.v-filterselect-focus .v-filterselect-input, .v-filterselect-v-combobox-gray.v-filterselect-focus .v-filterselect-input {
+    color: #535658 !important;
+    opacity: 0.20;
+  }
+
+  .v-combobox-gray{
+    @extend .combobox-common;
+
+  }
+
+
 
   // Insert your own theme rules here
 }

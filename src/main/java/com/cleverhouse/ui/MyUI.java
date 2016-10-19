@@ -13,6 +13,7 @@ import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.*;
 import com.vaadin.server.ThemeResource;
+import com.vaadin.ui.themes.ValoTheme;
 
 import java.util.Date;
 
@@ -32,34 +33,83 @@ public class MyUI extends UI {
     protected void init(VaadinRequest vaadinRequest) {
         VerticalLayout mainLayout = new VerticalLayout();
 
-        final GridLayout horizontalLayout = new GridLayout(2, 1);
-        horizontalLayout.setWidth("90%");
-        horizontalLayout.addStyleName("v-gray-bordered");
-        horizontalLayout.addStyleName("v-left-margined");
-        horizontalLayout.setMargin(true);
+//        final GridLayout horizontalLayout = new GridLayout(2, 1);
+//        horizontalLayout.setWidth("90%");
+//        horizontalLayout.addStyleName("v-gray-bordered");
+//        horizontalLayout.addStyleName("v-left-margined");
+//        horizontalLayout.setMargin(true);
+//
+//
+//        final VerticalLayout rightLayout = buildRightLayout();
+//
+//        final VerticalLayout leftLayout = buildLeftLayout();
+//
+//
+//        horizontalLayout.addComponents(leftLayout, rightLayout);
+//        horizontalLayout.addStyleName("v-gray-bordered");
+//
+//        mainLayout.addComponent(horizontalLayout);
 
-
-        final VerticalLayout rightLayout = buildRightLayout();
-
-        final VerticalLayout leftLayout = buildLeftLayout();
-
-
-        horizontalLayout.addComponents(leftLayout, rightLayout);
-        horizontalLayout.addStyleName("v-gray-bordered");
-
-        mainLayout.addComponent(horizontalLayout);
-
-
-        buildSecondPage(mainLayout);
+        buildNerwSecondPage(mainLayout);
+        //buildSecondPage(mainLayout);
 
 
         setContent(mainLayout);
 
     }
 
+
+    void buildNerwSecondPage(VerticalLayout layout){
+        layout.setMargin(true);
+        final Button dangerButton = new Button("Danger");
+        dangerButton.setStyleName("v-button-danger");
+
+        final Button primaryButton = new Button("Primary");
+        primaryButton.setStyleName("v-button-primary");
+
+
+        final Button grayedOutButton = new Button("Grayed Out");
+        grayedOutButton.setStyleName("v-button-grayedout");
+
+        final Button successButton = new Button("Success");
+        successButton.setStyleName("v-button-success");
+
+        final Label normalLabel = new Label("Normal label");
+        normalLabel.setStyleName("v-label-normal");
+
+        final Label grayedOutLabel = new Label("Grayed out");
+        grayedOutLabel.setStyleName("v-label-grayedout");
+
+
+        final ComboBox combobox = new ComboBox("Caption");
+        combobox.addStyleName(ValoTheme.COMBOBOX_BORDERLESS);
+        combobox.addStyleName("v-combobox-normal");
+        combobox.addItem("One");
+        combobox.addItem("Two");
+        combobox.addItem("Drei");
+        combobox.setNullSelectionAllowed(false);
+        combobox.setValue(combobox.getItemIds().iterator().next());
+
+        final ComboBox grayCombobox = new ComboBox("Caption");
+        grayCombobox.addStyleName(ValoTheme.COMBOBOX_BORDERLESS);
+        grayCombobox.addStyleName("v-combobox-gray");
+        grayCombobox.addItem("One");
+        grayCombobox.addItem("Two");
+        grayCombobox.addItem("Drei");
+        grayCombobox.setNullSelectionAllowed(false);
+        grayCombobox.setValue(grayCombobox.getItemIds().iterator().next());
+
+
+
+
+        layout.addComponents(dangerButton,primaryButton,grayedOutButton,successButton);
+        layout.addComponents(normalLabel,grayedOutLabel);
+        layout.addComponents(combobox,grayCombobox);
+
+    }
+
     void buildSecondPage(VerticalLayout layout){
         //addGrid(layout);
-        layout.setMargin(true);
 
         final TextField textField = new TextField();
         textField.setCaption("Standard text field");
@@ -82,8 +132,13 @@ public class MyUI extends UI {
         final Button moveLeftButton = new Button();
         moveLeftButton.setIcon(FontAwesome.ARROW_LEFT);
         moveLeftButton.setStyleName("v-move-left-button");
+
+
+
         final Button moveRightButton = new Button("-->");
         moveRightButton.setCaption("Move item right");
+
+
         final Button selectButton = new Button("SELECT");
         selectButton.setCaption("Normal button");
         final ComboBox comboBox = new ComboBox("Combobox");
