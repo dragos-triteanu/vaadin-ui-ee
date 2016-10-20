@@ -12968,54 +12968,42 @@ div.v-layout.v-horizontal.v-widget {
 	overflow: hidden;
 }
 
+.mytheme .mytheme .v-button:after {
+	left: 0 !important;
+	right: 0 !important;
+	top: 0 !important;
+	bottom: 0 !important;
+}
+
+.mytheme .caption-small, .mytheme .v-caption-v-combobox-normal, .mytheme .v-caption-v-combobox-mandatory, .mytheme .v-caption-v-textfield-normal, .mytheme .v-caption-v-textfield-mandatory, .mytheme .v-caption-v-datefield-normal, .mytheme .v-caption-v-datefield-mandatory {
+	width: 93px;
+	height: 14px;
+	font-family: OpenSans, sans-serif;
+	font-size: 10px;
+	font-weight: 600;
+	font-style: normal;
+	font-stretch: normal;
+	margin-bottom: 0px !important;
+	padding-bottom: 0px !important;
+	color: #7e8081;
+}
+
 .mytheme .button-common, .mytheme .v-button.v-button-success, .mytheme .v-button.v-button-danger, .mytheme .v-button.v-button-primary, .mytheme .v-button.v-button-grayedout {
 	width: 240px;
 	height: 40px;
 	border-radius: 4px;
 	border: none;
-	font-family: OpenSans;
+	font-family: OpenSans, sans-serif;
 	font-size: 16px;
 	font-weight: 600;
 	font-style: normal;
 	font-stretch: normal;
 	text-align: center;
 	color: #ffffff;
-}
-
-.mytheme .label-common, .mytheme .v-label.v-label-normal, .mytheme .v-label.v-label-grayedout {
-	width: 240px !important;
-	height: 22px;
-	font-family: OpenSans;
-	font-size: 16px;
-	font-weight: normal;
-	font-style: normal;
-	font-stretch: normal;
-	border-bottom: 1px solid #eaeaea;
-}
-
-.mytheme .combobox-common, .mytheme .v-combobox-normal, .mytheme .v-combobox-gray {
-	width: 240px;
-	height: 30px;
-	margin-top: -2px;
-	border-bottom: 1px solid #eaeaea;
-}
-
-.mytheme .combobox-caption-common {
-	width: 148px;
-	height: 22px;
-	font-family: OpenSans;
-	font-size: 16px;
-	font-weight: normal;
-	font-style: normal;
-	font-stretch: normal;
-}
-
-.mytheme .combobox-item-common, .mytheme .v-filterselect-suggestpopup .gwt-MenuItem-selected, .mytheme .v-filterselect-suggestpopup .gwt-MenuItem {
-	font-family: OpenSans;
-	font-size: 14px;
-	font-weight: normal;
-	font-style: normal;
-	font-stretch: normal;
+	left: 0 !important;
+	right: 0 !important;
+	top: 0 !important;
+	bottom: 0 !important;
 }
 
 .mytheme .v-button.v-button-success {
@@ -13034,12 +13022,49 @@ div.v-layout.v-horizontal.v-widget {
 	background: #eaeaea;
 }
 
+.mytheme .label-common, .mytheme .v-label.v-label-normal, .mytheme .v-label.v-label-mandatory {
+	padding-top: 13px;
+	padding-bottom: 3px;
+	width: 240px !important;
+	height: 40px;
+	font-family: OpenSans, sans-serif;
+	font-size: 16px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	border-bottom: 1px solid #eaeaea;
+}
+
 .mytheme .v-label.v-label-normal {
 	color: #34657f;
 }
 
-.mytheme .v-label.v-label-grayedout {
+.mytheme .v-label.v-label-mandatory {
 	color: #eaeaea;
+}
+
+.mytheme .combobox-common, .mytheme .v-combobox-normal, .mytheme .v-combobox-mandatory {
+	width: 240px;
+	height: 26px;
+	border-bottom: 1px solid #eaeaea;
+}
+
+.mytheme .combobox-caption-common {
+	width: 148px;
+	height: 22px;
+	font-family: OpenSans, sans-serif;
+	font-size: 16px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+}
+
+.mytheme .combobox-item-common, .mytheme .v-filterselect-suggestpopup .gwt-MenuItem-selected, .mytheme .v-filterselect-suggestpopup .gwt-MenuItem {
+	font-family: OpenSans, sans-serif;
+	font-size: 14px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
 }
 
 .mytheme .v-combobox-normal {
@@ -13049,6 +13074,7 @@ div.v-layout.v-horizontal.v-widget {
 
 .mytheme .v-filterselect-suggestpopup .gwt-MenuItem-selected {
 	background: #34657f !important;
+	color: white;
 }
 
 .mytheme .v-filterselect-suggestpopup .gwt-MenuItem {
@@ -13060,12 +13086,11 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .mytheme .v-combobox-normal .v-filterselect-input {
-	font-family: OpenSans;
 	padding: 0px 0px 0px 1px;
 	margin: 0px;
 	width: 148px;
 	height: 22px;
-	font-family: OpenSans;
+	font-family: OpenSans, sans-serif;
 	font-size: 16px;
 	font-weight: normal;
 	font-style: normal;
@@ -13073,39 +13098,12 @@ div.v-layout.v-horizontal.v-widget {
 	color: #34657f;
 }
 
-.mytheme .v-caption-v-combobox-normal {
-	width: 93px;
-	height: 14px;
-	font-family: OpenSans;
-	font-size: 10px;
-	font-weight: 600;
-	font-style: normal;
-	font-stretch: normal;
-	margin-bottom: 0px !important;
-	padding-bottom: 0px !important;
-	color: #7e8081;
-}
-
-.mytheme .v-caption-v-combobox-gray {
-	width: 93px;
-	height: 14px;
-	font-family: OpenSans;
-	font-size: 10px;
-	font-weight: 600;
-	font-style: normal;
-	font-stretch: normal;
-	margin-bottom: 0px !important;
-	padding-bottom: 0px !important;
-	color: #34657f;
-}
-
-.mytheme .v-combobox-gray .v-filterselect-input {
-	font-family: OpenSans;
+.mytheme .v-combobox-mandatory .v-filterselect-input {
+	font-family: OpenSans, sans-serif;
 	padding: 0px 0px 0px 1px;
 	margin: 0px;
 	width: 148px;
 	height: 22px;
-	font-family: OpenSans;
 	font-size: 16px;
 	font-weight: normal;
 	font-style: normal;
@@ -13113,7 +13111,48 @@ div.v-layout.v-horizontal.v-widget {
 	color: #7e8081;
 }
 
-.mytheme .v-filterselect-v-combobox-normal.v-filterselect-focus .v-filterselect-input, .mytheme .v-filterselect-v-combobox-gray.v-filterselect-focus .v-filterselect-input {
+.mytheme .v-filterselect-v-combobox-normal.v-filterselect-focus .v-filterselect-input, .mytheme .v-filterselect-v-combobox-mandatory.v-filterselect-focus .v-filterselect-input {
 	color: #535658 !important;
 	opacity: 0.2;
+}
+
+.mytheme .v-caption-v-combobox-mandatory {
+	color: #34657f;
+}
+
+.mytheme .textfield-common, .mytheme .v-textfield-normal, .mytheme .v-textfield-mandatory {
+	width: 240px;
+	height: 26px;
+	padding: 0px;
+	border-bottom: 1px solid #eaeaea;
+	color: #7e8081;
+}
+
+.mytheme .v-caption-v-textfield-mandatory {
+	color: #34657f !important;
+}
+
+.mytheme .v-textfield-prompt {
+	color: #7e8081;
+	opacity: 0.2 !important;
+}
+
+.mytheme .v-datefield-normal, .mytheme .v-datefield-mandatory {
+	width: 240px;
+	height: 26px;
+	border-bottom: 1px solid #7e8081;
+}
+
+.mytheme .v-datefield-normal .v-datefield-button, .mytheme .v-datefield-mandatory .v-datefield-button {
+	right: 1px !important;
+	left: initial !important;
+}
+
+.mytheme .v-datefield-normal .v-datefield-textfield, .mytheme .v-datefield-mandatory .v-datefield-textfield {
+	padding: 0px 44.4px 0px 0px;
+	font-size: 16px;
+}
+
+.mytheme .v-caption-v-datefield-mandatory {
+	color: #34657f;
 }

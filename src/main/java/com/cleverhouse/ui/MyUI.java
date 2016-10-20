@@ -5,9 +5,12 @@ import javax.servlet.annotation.WebServlet;
 import com.cleverhouse.model.SomeData;
 import com.cleverhouse.service.SomeService;
 import java.util.Random;
+
+import com.vaadin.annotations.StyleSheet;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.data.util.BeanItemContainer;
+import com.vaadin.event.FieldEvents;
 import com.vaadin.server.FontAwesome;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
@@ -25,6 +28,7 @@ import java.util.Date;
  * overridden to add component to the user interface and initialize non-component functionality.
  */
 @Theme("mytheme")
+@StyleSheet({"https://fonts.googleapis.com/css?family=Open+Sans"})
 public class MyUI extends UI {
 
     SomeService service = SomeService.getInstance();
@@ -78,7 +82,17 @@ public class MyUI extends UI {
         normalLabel.setStyleName("v-label-normal");
 
         final Label grayedOutLabel = new Label("Grayed out");
-        grayedOutLabel.setStyleName("v-label-grayedout");
+        grayedOutLabel.setStyleName("v-label-mandatory");
+
+        final TextField textFieldGrayCaption = new TextField("Caption");
+        textFieldGrayCaption.setInputPrompt("Placeholder");
+        textFieldGrayCaption.setStyleName(ValoTheme.TEXTFIELD_BORDERLESS);
+        textFieldGrayCaption.addStyleName("v-textfield-normal");
+
+        final TextField mandatoryTextField = new TextField("Caption");
+        mandatoryTextField.setInputPrompt("Placeholder");
+        mandatoryTextField.setStyleName(ValoTheme.TEXTFIELD_BORDERLESS);
+        mandatoryTextField.addStyleName("v-textfield-mandatory");
 
 
         final ComboBox combobox = new ComboBox("Caption");
@@ -92,19 +106,23 @@ public class MyUI extends UI {
 
         final ComboBox grayCombobox = new ComboBox("Caption");
         grayCombobox.addStyleName(ValoTheme.COMBOBOX_BORDERLESS);
-        grayCombobox.addStyleName("v-combobox-gray");
+        grayCombobox.addStyleName("v-combobox-mandatory");
         grayCombobox.addItem("One");
         grayCombobox.addItem("Two");
         grayCombobox.addItem("Drei");
         grayCombobox.setNullSelectionAllowed(false);
         grayCombobox.setValue(grayCombobox.getItemIds().iterator().next());
 
-
-
+        final DateField datefield = new DateField();
+        datefield.addStyleName(ValoTheme.DATEFIELD_BORDERLESS);
+        datefield.setCaption("Caption");
+        datefield.addStyleName("v-datefield-normal");
 
         layout.addComponents(dangerButton,primaryButton,grayedOutButton,successButton);
         layout.addComponents(normalLabel,grayedOutLabel);
         layout.addComponents(combobox,grayCombobox);
+        layout.addComponents(textFieldGrayCaption,mandatoryTextField);
+        layout.addComponent(datefield);
 
     }
 

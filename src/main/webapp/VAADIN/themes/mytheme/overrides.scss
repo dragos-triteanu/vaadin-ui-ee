@@ -1,16 +1,32 @@
+$ui_gray: #7e8081;
+$font: OpenSans, sans-serif;
+$ui_blue: #34657f;
 @mixin overrides {
 
+  .mytheme .v-button:after {
+    left: 0 !important;
+    right: 0 !important;
+    top: 0 !important;
+    bottom: 0 !important;
+  }
+
+  .caption-small {
+    width: 93px;
+    height: 14px;
+    font-family: $font;
+    font-size: 10px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    margin-bottom: 0px !important;
+    padding-bottom: 0px !important;
+    color: $ui_gray;
+  }
+
+  //* BUTTONS *//
   $button_width: 240px;
   $button_height: 40px;
 
-  $label_width: 240px;
-  $label_height: 22px;
-
-  $combobox_width: 240px;
-  $combobox_height: 30px;
-
-  $label_normal_color: #34657f;
-  $label_grayedout_color: #eaeaea;
   $success-button-color: #51ba74;
   $danger-button-color: #cc7252;
   $primary-button-color: #34657f;
@@ -21,49 +37,17 @@
     height: $button_height;
     border-radius: 4px;
     border: none;
-    font-family: OpenSans;
+    font-family: $font;
     font-size: 16px;
     font-weight: 600;
     font-style: normal;
     font-stretch: normal;
     text-align: center;
     color: #ffffff;
-  }
-
-  .label-common {
-    width: $label_width !important;
-    height: $label_height;
-    font-family: OpenSans;
-    font-size: 16px;
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: normal;
-    border-bottom: 1px solid #eaeaea;
-  }
-
-  .combobox-common {
-    width: $combobox_width;
-    height: $combobox_height;
-    margin-top: -2px;
-    border-bottom: 1px solid #eaeaea;
-  }
-
-  .combobox-caption-common {
-    width: 148px;
-    height: 22px;
-    font-family: OpenSans;
-    font-size: 16px;
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: normal;
-  }
-
-  .combobox-item-common {
-    font-family: OpenSans;
-    font-size: 14px;
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: normal;
+    left: 0 !important;
+    right: 0 !important;
+    top: 0 !important;
+    bottom: 0 !important;
   }
 
   .v-button.v-button-success {
@@ -86,14 +70,62 @@
     background: $grayedout-button-color;
   }
 
+  /* LABELS */
+  $label_width: 240px;
+  $label_height: 40px;
+
+  $label_normal_color: #34657f;
+  $label_grayedout_color: #eaeaea;
+
+  .label-common {
+    padding-top: 13px;
+    padding-bottom: 3px;
+    width: $label_width !important;
+    height: $label_height;
+    font-family: $font;
+    font-size: 16px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    border-bottom: 1px solid #eaeaea;
+  }
+
   .v-label.v-label-normal {
     @extend .label-common;
     color: $label_normal_color;
   }
 
-  .v-label.v-label-grayedout {
+  .v-label.v-label-mandatory {
     @extend .label-common;
     color: $label_grayedout_color;
+  }
+
+  /* COMBOBOXES */
+  $combobox_width: 240px;
+  $combobox_height: 26px;
+
+  .combobox-common {
+    width: $combobox_width;
+    height: $combobox_height;
+    border-bottom: 1px solid #eaeaea;
+  }
+
+  .combobox-caption-common {
+    width: 148px;
+    height: 22px;
+    font-family: $font;
+    font-size: 16px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+  }
+
+  .combobox-item-common {
+    font-family: $font;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
   }
 
   .v-combobox-normal {
@@ -104,83 +136,132 @@
 
   .v-filterselect-suggestpopup .gwt-MenuItem-selected {
     @extend .combobox-item-common;
-    background: #34657f !important;
+    background: $ui_blue !important;
+    color: white;
   }
 
   .v-filterselect-suggestpopup .gwt-MenuItem {
     @extend .combobox-item-common;
-    color: #7e8081;
+    color: $ui_gray;
   }
 
-  .v-filterselect-suggestpopup .gwt-MenuItem:hover{
+  .v-filterselect-suggestpopup .gwt-MenuItem:hover {
     color: white;
   }
 
   .v-combobox-normal .v-filterselect-input {
-    font-family: OpenSans;
     padding: 0px 0px 0px 1px;
     margin: 0px;
     width: 148px;
     height: 22px;
-    font-family: OpenSans;
+    font-family: $font;
     font-size: 16px;
     font-weight: normal;
     font-style: normal;
     font-stretch: normal;
-    color: #34657f;
+    color: $ui_blue;
   }
 
   .v-caption-v-combobox-normal {
-    width: 93px;
-    height: 14px;
-    font-family: OpenSans;
-    font-size: 10px;
-    font-weight: 600;
-    font-style: normal;
-    font-stretch: normal;
-    margin-bottom: 0px !important;
-    padding-bottom: 0px !important;
-    color: #7e8081;
+    @extend .caption-small;
   }
 
-  .v-caption-v-combobox-gray {
-    width: 93px;
-    height: 14px;
-    font-family: OpenSans;
-    font-size: 10px;
-    font-weight: 600;
-    font-style: normal;
-    font-stretch: normal;
-    margin-bottom: 0px !important;
-    padding-bottom: 0px !important;
-    color: #34657f;
-  }
-
-  .v-combobox-gray .v-filterselect-input {
-    font-family: OpenSans;
+  .v-combobox-mandatory .v-filterselect-input {
+    font-family: $font;
     padding: 0px 0px 0px 1px;
     margin: 0px;
     width: 148px;
     height: 22px;
-    font-family: OpenSans;
     font-size: 16px;
     font-weight: normal;
     font-style: normal;
     font-stretch: normal;
-    color: #7e8081;
+    color: $ui_gray;
   }
 
-  .v-filterselect-v-combobox-normal.v-filterselect-focus .v-filterselect-input, .v-filterselect-v-combobox-gray.v-filterselect-focus .v-filterselect-input {
+  .v-filterselect-v-combobox-normal.v-filterselect-focus .v-filterselect-input, .v-filterselect-v-combobox-mandatory.v-filterselect-focus .v-filterselect-input {
     color: #535658 !important;
     opacity: 0.20;
   }
 
-  .v-combobox-gray{
+  .v-combobox-mandatory {
     @extend .combobox-common;
 
   }
 
+  .v-caption-v-combobox-mandatory {
+    @extend .caption-small;
+    color: $ui_blue;
+  }
 
+  /* TEXTFIELDS */
+
+  $textfield_width: 240px;
+  $textfield_height: 26px;
+
+  .textfield-common {
+    width: $textfield_width;
+    height: $textfield_height;
+    padding: 0px;
+    border-bottom: 1px solid #eaeaea;
+    color: $ui_gray;
+  }
+
+  .v-caption-v-textfield-normal {
+    @extend .caption-small;
+  }
+
+  .v-textfield-normal {
+    @extend .textfield-common;
+
+  }
+
+  .v-textfield-mandatory {
+    @extend .textfield-common;
+  }
+
+  .v-caption-v-textfield-mandatory {
+    @extend .caption-small;
+    color: $ui_blue !important;
+  }
+
+  .v-textfield-prompt {
+    color: $ui_gray;
+    opacity: 0.20 !important;
+  }
+
+  /** DATEFIELD**/
+  .v-datefield-normal {
+    $datefield_width: 240px;
+    $datefield_height: 26px;
+
+    width: $datefield_width;
+    height: $datefield_height;
+    border-bottom: 1px solid $ui_gray;
+  }
+
+  .v-datefield-normal .v-datefield-button {
+    right: 1px !important;
+    left: initial !important;
+  }
+
+  .v-datefield-normal .v-datefield-textfield {
+    padding: 0px 44.4px 0px 0px;
+    font-size: 16px;
+  }
+
+  .v-caption-v-datefield-normal {
+    @extend .caption-small;
+  }
+
+  .v-datefield-mandatory {
+    @extend .v-datefield-normal;
+  }
+
+  .v-caption-v-datefield-mandatory {
+    @extend .caption-small;
+    color: $ui_blue;
+  }
 
   // Insert your own theme rules here
 }
