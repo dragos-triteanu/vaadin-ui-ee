@@ -12968,45 +12968,152 @@ div.v-layout.v-horizontal.v-widget {
 	overflow: hidden;
 }
 
-.mytheme .v-button, .mytheme .v-button-wrap {
-	color: whitesmoke;
-	background: #c0392b;
+.mytheme .button-common, .mytheme .v-button.v-button-success, .mytheme .v-button.v-button-danger, .mytheme .v-button.v-button-primary, .mytheme .v-button.v-button-grayedout {
+	width: 240px;
+	height: 40px;
+	border-radius: 4px;
 	border: none;
+	font-family: OpenSans;
+	font-size: 16px;
+	font-weight: 600;
+	font-style: normal;
+	font-stretch: normal;
+	text-align: center;
+	color: #ffffff;
 }
 
-.mytheme .v-mandatory-field {
-	background: yellow;
-	background-color: yellow;
+.mytheme .label-common, .mytheme .v-label.v-label-normal, .mytheme .v-label.v-label-grayedout {
+	width: 240px !important;
+	height: 22px;
+	font-family: OpenSans;
+	font-size: 16px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	border-bottom: 1px solid #eaeaea;
 }
 
-.mytheme .v-icon {
-	font-size: 15px;
+.mytheme .combobox-common, .mytheme .v-combobox-normal, .mytheme .v-combobox-gray {
+	width: 240px;
+	height: 30px;
+	margin-top: -2px;
+	border-bottom: 1px solid #eaeaea;
 }
 
-.mytheme .v-gray-bordered {
-	border: 1px solid lightgray;
+.mytheme .combobox-caption-common {
+	width: 148px;
+	height: 22px;
+	font-family: OpenSans;
+	font-size: 16px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
 }
 
-.mytheme .v-gray-background {
-	background: gray;
+.mytheme .combobox-item-common, .mytheme .v-filterselect-suggestpopup .gwt-MenuItem-selected, .mytheme .v-filterselect-suggestpopup .gwt-MenuItem {
+	font-family: OpenSans;
+	font-size: 14px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
 }
 
-.mytheme .v-panel-content > div {
-	background: gray;
+.mytheme .v-button.v-button-success {
+	background: #51ba74;
 }
 
-.mytheme .v-panel .v-panel-content-desktop {
-	background: gray;
+.mytheme .v-button.v-button-danger {
+	background: #cc7252;
 }
 
-.mytheme .v-left-margined {
-	margin-left: 5%;
+.mytheme .v-button.v-button-primary {
+	background: #34657f;
 }
 
-.mytheme .v-gridlayout-gridexample div {
-	background-color: lightgray;
+.mytheme .v-button.v-button-grayedout {
+	background: #eaeaea;
 }
 
-.mytheme .v-checkbox > input:checked {
-	color: green;
+.mytheme .v-label.v-label-normal {
+	color: #34657f;
+}
+
+.mytheme .v-label.v-label-grayedout {
+	color: #eaeaea;
+}
+
+.mytheme .v-combobox-normal {
+	border-bottom: 1px solid #eaeaea;
+	margin-top: 0px;
+}
+
+.mytheme .v-filterselect-suggestpopup .gwt-MenuItem-selected {
+	background: #34657f !important;
+}
+
+.mytheme .v-filterselect-suggestpopup .gwt-MenuItem {
+	color: #7e8081;
+}
+
+.mytheme .v-filterselect-suggestpopup .gwt-MenuItem:hover {
+	color: white;
+}
+
+.mytheme .v-combobox-normal .v-filterselect-input {
+	font-family: OpenSans;
+	padding: 0px 0px 0px 1px;
+	margin: 0px;
+	width: 148px;
+	height: 22px;
+	font-family: OpenSans;
+	font-size: 16px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	color: #34657f;
+}
+
+.mytheme .v-caption-v-combobox-normal {
+	width: 93px;
+	height: 14px;
+	font-family: OpenSans;
+	font-size: 10px;
+	font-weight: 600;
+	font-style: normal;
+	font-stretch: normal;
+	margin-bottom: 0px !important;
+	padding-bottom: 0px !important;
+	color: #7e8081;
+}
+
+.mytheme .v-caption-v-combobox-gray {
+	width: 93px;
+	height: 14px;
+	font-family: OpenSans;
+	font-size: 10px;
+	font-weight: 600;
+	font-style: normal;
+	font-stretch: normal;
+	margin-bottom: 0px !important;
+	padding-bottom: 0px !important;
+	color: #34657f;
+}
+
+.mytheme .v-combobox-gray .v-filterselect-input {
+	font-family: OpenSans;
+	padding: 0px 0px 0px 1px;
+	margin: 0px;
+	width: 148px;
+	height: 22px;
+	font-family: OpenSans;
+	font-size: 16px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	color: #7e8081;
+}
+
+.mytheme .v-filterselect-v-combobox-normal.v-filterselect-focus .v-filterselect-input, .mytheme .v-filterselect-v-combobox-gray.v-filterselect-focus .v-filterselect-input {
+	color: #535658 !important;
+	opacity: 0.2;
 }
