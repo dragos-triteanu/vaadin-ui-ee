@@ -1,6 +1,7 @@
 $ui_gray: #7e8081;
 $font: OpenSans, sans-serif;
 $ui_blue: #34657f;
+$dark_gray: #535658;
 @mixin overrides {
 
   .mytheme .v-button:after {
@@ -137,7 +138,7 @@ $ui_blue: #34657f;
   .v-filterselect-suggestpopup .gwt-MenuItem-selected {
     @extend .combobox-item-common;
     background: $ui_blue !important;
-    color: white;
+    color: white !important;
   }
 
   .v-filterselect-suggestpopup .gwt-MenuItem {
@@ -180,7 +181,7 @@ $ui_blue: #34657f;
   }
 
   .v-filterselect-v-combobox-normal.v-filterselect-focus .v-filterselect-input, .v-filterselect-v-combobox-mandatory.v-filterselect-focus .v-filterselect-input {
-    color: #535658 !important;
+    color: $dark_gray !important;
     opacity: 0.20;
   }
 
@@ -231,23 +232,28 @@ $ui_blue: #34657f;
   }
 
   /** DATEFIELD**/
-  .v-datefield-normal {
-    $datefield_width: 240px;
-    $datefield_height: 26px;
+  $datefield_width: 240px;
+  $datefield_height: 26px;
 
-    width: $datefield_width;
-    height: $datefield_height;
-    border-bottom: 1px solid $ui_gray;
+  .v-datefield-normal {
   }
 
-  .v-datefield-normal .v-datefield-button {
-    right: 1px !important;
-    left: initial !important;
+  .v-datefield-normal .v-datefield-button, .v-datefield-mandatory .v-datefield-button {
+    margin-left: $datefield_width - 40px;
+    margin-bottom: 10px;
+  }
+
+  .v-datefield-normal .v-datefield-button:before, .v-datefield-mandatory .v-datefield-button:before {
+    content: url("newicons/calendar.png");
   }
 
   .v-datefield-normal .v-datefield-textfield {
     padding: 0px 44.4px 0px 0px;
     font-size: 16px;
+    border-bottom: 1px solid #eaeaea;
+    width: $datefield_width;
+    height: $datefield_height;
+    margin-bottom: 5px;
   }
 
   .v-caption-v-datefield-normal {
@@ -261,6 +267,206 @@ $ui_blue: #34657f;
   .v-caption-v-datefield-mandatory {
     @extend .caption-small;
     color: $ui_blue;
+  }
+
+  /** TREE **/
+
+  $tree_item_height: 30px;
+  $tree_item_width: 200px;
+
+  .v-tree-normal .v-tree-node-caption {
+    height: $tree_item_height;
+    width: $tree_item_width;
+  }
+
+  .v-tree-normal .v-tree-node-caption > div {
+    height: $tree_item_height;
+  }
+
+  .v-tree-normal .v-tree-node > div .v-icon {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
+  .v-tree-normal .v-tree-node > div span {
+    margin-top: 4px;
+    margin-bottom: 7px;
+    margin-left: 10px;
+    font-family: $font;
+    line-height: 19px;
+    width: 108px;
+    height: 19px;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    color: #7e8081;
+  }
+
+  .v-tree-normal .v-tree-node:before {
+  }
+
+  .v-tree-normal .v-tree-node-caption.v-tree-node-selected {
+    background: transparent none !important;
+    border: solid 1px #eaeaea;
+    border-radius: 4px;
+  }
+
+  .v-tree-normal .v-tree-node-caption.v-tree-node-selected:after, .v-tree-normal .v-tree-node-caption.v-tree-node-selected .v-icon {
+    background: transparent none !important;
+    color: $dark_gray;
+  }
+
+  .v-tree-node-focus:after {
+    border: none !important;
+  }
+
+  .v-tree-normal .v-tree-node-caption.v-tree-node-selected span {
+    color: $dark_gray;
+  }
+
+  .v-caption-v-tree-normal {
+    width: 240px;
+    height: 30px;
+    font-family: $font;
+    font-size: 16px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    color: $dark_gray;
+    border-bottom: 1px solid #eaeaea;
+  }
+
+  .v-caption-v-tree-normal .v-captiontext {
+    width: 80px;
+    height: 22px;
+    font-family: $font;
+    font-size: 16px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    color: $dark_gray;
+  }
+
+  /** MENUBAR **/
+  .v-menubar-normal {
+
+  }
+
+  .v-caption-v-menubar-normal {
+    width: 86px;
+    height: 22px;
+    font-family: $font;
+    font-size: 16px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    color: #535658;
+  }
+
+  .v-menubar-menuitem {
+    width: 170px;
+    height: 30px;
+  }
+
+  .v-menubar-popup .v-menubar-menuitem-selected {
+    background-color: $ui_blue !important;
+    background-image: none;
+  }
+
+  .v-menubar-popup .v-menubar-menuitem-selected .v-menubar-menuitem-caption {
+    color: #ffffff;
+  }
+
+  .v-menubar-popup .v-menubar-menuitem:hover .v-menubar-menuitem-caption {
+    color: #ffffff;
+  }
+
+  .v-menubar-popup .v-menubar-menuitem .v-menubar-menuitem-caption {
+    width: 108px;
+    height: 19px;
+    font-family: $font;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    color: #7e8081;
+  }
+
+  .v-menubar-popup .v-menubar-menuitem {
+    padding: 5px 20px 6px;
+  }
+
+  .v-menubar-normal .v-menubar-menuitem .v-menubar-menuitem-caption {
+    color: $ui_blue;
+  }
+
+  .v-menubar-normal .v-menubar-menuitem-selected {
+    background-color: $ui_blue !important;
+    background-image: none;
+  }
+
+  .v-menubar-normal .v-menubar-menuitem-selected .v-menubar-menuitem-caption {
+    color: #ffffff;
+  }
+
+  /** GRID **/
+  .v-table-normal {
+    background: white;
+  }
+
+  .v-table-normal .v-table-row .v-table-cell-content, .v-table-normal .v-table-row-odd .v-table-cell-content {
+    width: 90px;
+    height: 19px;
+    font-family: $font;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    color: #7e8081;
+  }
+
+
+  .v-table-normal .v-table-row {
+    height: 30px;
+  }
+
+  .v-caption-v-table-normal {
+    width: 91px;
+    height: 22px;
+    font-family: $font;
+    font-size: 16px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    color: #535658;
+  }
+
+  .v-table-normal .v-table-header-cell, .v-table-normal .v-table-header-cell-asc, .v-table-normal .v-table-header-cell-desc {
+    border: none;
+    background: white;
+  }
+
+  .v-table-normal .v-table-caption-container {
+    border: none;
+    background: transparent none;
+    height: 17px;
+    font-family: $font;
+    font-size: 12px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    color: #535658;
+  }
+
+  .v-table-normal .v-table-body{
+    //width: calc(100% - 20px);
+    //margin-left:10px;
+  }
+
+  .v-table-normal .v-table-body {
+    //padding-left: 10px;
+    //padding-right: 10px;
   }
 
   // Insert your own theme rules here

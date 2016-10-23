@@ -4,21 +4,16 @@ import javax.servlet.annotation.WebServlet;
 
 import com.cleverhouse.model.SomeData;
 import com.cleverhouse.service.SomeService;
-import java.util.Random;
 
 import com.vaadin.annotations.StyleSheet;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.data.util.BeanItemContainer;
-import com.vaadin.event.FieldEvents;
-import com.vaadin.server.FontAwesome;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.*;
 import com.vaadin.server.ThemeResource;
 import com.vaadin.ui.themes.ValoTheme;
-
-import java.util.Date;
 
 /**
  * This UI is the application entry point. A UI may either represent a browser window
@@ -36,6 +31,8 @@ public class MyUI extends UI {
     @Override
     protected void init(VaadinRequest vaadinRequest) {
         VerticalLayout mainLayout = new VerticalLayout();
+        mainLayout.setWidth("80%");
+        mainLayout.setMargin(true);
 
 //        final GridLayout horizontalLayout = new GridLayout(2, 1);
 //        horizontalLayout.setWidth("90%");
@@ -63,7 +60,7 @@ public class MyUI extends UI {
     }
 
 
-    void buildNerwSecondPage(VerticalLayout layout){
+    void buildNerwSecondPage(VerticalLayout layout) {
         layout.setMargin(true);
         final Button dangerButton = new Button("Danger");
         dangerButton.setStyleName("v-button-danger");
@@ -118,16 +115,50 @@ public class MyUI extends UI {
         datefield.setCaption("Caption");
         datefield.addStyleName("v-datefield-normal");
 
-        layout.addComponents(dangerButton,primaryButton,grayedOutButton,successButton);
-        layout.addComponents(normalLabel,grayedOutLabel);
-        layout.addComponents(combobox,grayCombobox);
-        layout.addComponents(textFieldGrayCaption,mandatoryTextField);
+        final Tree tree = new Tree("Tree");
+        tree.addStyleName("v-tree-normal");
+        for (int i = 0; i < 10; i++) { // 10*10 elements
+            tree.addItem(makeTree(tree, i, 0));
+        }
+
+        final MenuBar menuBar = new MenuBar();
+        menuBar.addStyleName(ValoTheme.MENUBAR_BORDERLESS);
+        menuBar.addStyleName("v-menubar-normal");
+        menuBar.setCaption("Multi menu");
+        MenuBar.Command command = new MenuBar.Command() {
+            @Override
+            public void menuSelected(MenuBar.MenuItem menuItem) {
+                Notification.show(menuItem.getText() + "selected");
+            }
+        };
+        MenuBar.MenuItem item1 = menuBar.addItem("Item1", null, null);
+        menuBar.addItem("Item2", command);
+        menuBar.addItem("Item3", command);
+        MenuBar.MenuItem subItem = item1.addItem("Subitem 1", null, null);
+        item1.addItem("Subitem 2", command);
+        subItem.addItem("SubSubitem", command);
+
+
+        Table table = makeATable();
+        table.addStyleName(ValoTheme.TABLE_BORDERLESS);
+        table.addStyleName(ValoTheme.TABLE_NO_VERTICAL_LINES);
+        table.addStyleName(ValoTheme.TABLE_NO_STRIPES);
+        table.addStyleName("v-table-normal");
+
+
+        layout.addComponents(dangerButton, primaryButton, grayedOutButton, successButton);
+        layout.addComponents(normalLabel, grayedOutLabel);
+        layout.addComponents(combobox, grayCombobox);
+        layout.addComponents(textFieldGrayCaption, mandatoryTextField);
         layout.addComponent(datefield);
+        layout.addComponent(tree);
+        layout.addComponent(menuBar);
+        layout.addComponent(table);
 
     }
 
-    void buildSecondPage(VerticalLayout layout){
-        //addGrid(layout);
+   /* void buildSecondPage(VerticalLayout layout) {
+        //makeATable(layout);
 
         final TextField textField = new TextField();
         textField.setCaption("Standard text field");
@@ -152,7 +183,6 @@ public class MyUI extends UI {
         moveLeftButton.setStyleName("v-move-left-button");
 
 
-
         final Button moveRightButton = new Button("-->");
         moveRightButton.setCaption("Move item right");
 
@@ -162,10 +192,10 @@ public class MyUI extends UI {
         final ComboBox comboBox = new ComboBox("Combobox");
 
         final OptionGroup checkboxGroup = new OptionGroup("Checkboxes");
-        checkboxGroup.addItems("One","Two","Three");
+        checkboxGroup.addItems("One", "Two", "Three");
 
         final OptionGroup checkboxMultiselect = new OptionGroup("Checkboxes");
-        checkboxMultiselect.addItems("One","Two","Three");
+        checkboxMultiselect.addItems("One", "Two", "Three");
         checkboxMultiselect.setMultiSelect(true);
 
         final MenuBar menuBar = new MenuBar();
@@ -177,13 +207,13 @@ public class MyUI extends UI {
             }
         };
         MenuBar.MenuItem item1 = menuBar.addItem("Item1", null, null);
-        menuBar.addItem("Item2",command);
-        menuBar.addItem("Item3",command);
+        menuBar.addItem("Item2", command);
+        menuBar.addItem("Item3", command);
 
-        MenuBar.MenuItem subItem = item1.addItem("Subitem 1", null,null);
-        item1.addItem("Subitem 2",command);
+        MenuBar.MenuItem subItem = item1.addItem("Subitem 1", null, null);
+        item1.addItem("Subitem 2", command);
 
-        subItem.addItem("SubSubitem",command);
+        subItem.addItem("SubSubitem", command);
 
         CustomLayout loginLayout = buildLoginLayout();
 
@@ -200,40 +230,40 @@ public class MyUI extends UI {
         layout.addComponent(checkboxMultiselect);
         layout.addComponent(menuBar);
         layout.addComponent(new Label("Grid example"));
-        addGrid(layout);
+        makeATable();
         layout.addComponent(loginLayout);
-		
-		// NEW 161004
-		
-		TextArea area = new TextArea("Big Area");
-		area.setValue("A row\n"+
-              "Another row\n"+
-              "Yet another row"+
-			  "Another row\n"+
-			  "Another row\n"+"Another row\n"+"Another row\n"+"Another row\n"+"Another row\n"+"Another row\n");
-			  
-		area.setHeight("150px");	
-		area.setWidth("150px");	
-		layout.addComponent(area);
-		HorizontalLayout hl = new HorizontalLayout();
-		hl.setWidth("-1px");
-		Button a = new Button();
-		Button b = new Button();
-		Button c = new Button();
-		Button d = new Button();
-		a.setIcon(new ThemeResource("icons/save.gif"));
-		b.setIcon(new ThemeResource("icons/saveAll.gif"));
-		c.setIcon(new ThemeResource("icons/saveAndPrint.gif"));
-		d.setIcon(new ThemeResource("icons/saveAs.gif"));
-		hl.addComponent(a);
-		hl.addComponent(b);
-		hl.addComponent(c);
-		hl.addComponent(d);
-		hl.setSpacing(true);
-		hl.setCaption("Toolbar");
-		layout.addComponent(hl);
+
+        // NEW 161004
+
+        TextArea area = new TextArea("Big Area");
+        area.setValue("A row\n" +
+                "Another row\n" +
+                "Yet another row" +
+                "Another row\n" +
+                "Another row\n" + "Another row\n" + "Another row\n" + "Another row\n" + "Another row\n" + "Another row\n");
+
+        area.setHeight("150px");
+        area.setWidth("150px");
+        layout.addComponent(area);
+        HorizontalLayout hl = new HorizontalLayout();
+        hl.setWidth("-1px");
+        Button a = new Button();
+        Button b = new Button();
+        Button c = new Button();
+        Button d = new Button();
+        a.setIcon(new ThemeResource("icons/save.gif"));
+        b.setIcon(new ThemeResource("icons/saveAll.gif"));
+        c.setIcon(new ThemeResource("icons/saveAndPrint.gif"));
+        d.setIcon(new ThemeResource("icons/saveAs.gif"));
+        hl.addComponent(a);
+        hl.addComponent(b);
+        hl.addComponent(c);
+        hl.addComponent(d);
+        hl.setSpacing(true);
+        hl.setCaption("Toolbar");
+        layout.addComponent(hl);
         setContent(layout);
-    }
+    }*/
 
     private CustomLayout buildLoginLayout() {
         CustomLayout loginLayout = new CustomLayout("loginLayout");
@@ -247,59 +277,29 @@ public class MyUI extends UI {
     }
 
 
-    private void addGrid(VerticalLayout layout) {
-        Grid grid = new Grid();
-        grid.setContainerDataSource(new BeanItemContainer<>(SomeData.class, service.spamData(7)));
-        layout.addComponent(grid);
+    private Table makeATable() {
+        Table table = new Table("Table");
+        table.setContainerDataSource(new BeanItemContainer<>(SomeData.class, service.spamData(7)));
+        return table;
     }
-	// NEW 161004
-	private int makeTree(Tree tree,int i,int k) {	
-		String [] icon = new String[]{		
-"boxausschluss.gif",
-"boxausschlussmonitored.gif",
-"boxausschlussmonitored_new.gif",
-"boxausschluss_new.gif",
-"boxgewaehlt.gif",
-"boxgewaehltmonitored.gif",
-"boxgewaehltmonitored_gray.gif",
-"boxgewaehltmonitored_new.gif",
-"boxgewaehltmonitored_new_gray.gif",
-"boxgewaehlt_gray.gif",
-"boxgewaehlt_new.gif",
-"boxgewaehlt_new_gray.gif",
-"boxleer.gif",
-"boxleermonitored.gif",
-"boxleermonitored_new.gif",
-"boxleer_gray.gif",
-"boxleer_new.gif",
-"boxobligmonitored.gif",
-"boxobligmonitored_en.gif",
-"boxobligmonitored_en_gray.gif",
-"boxobligmonitored_gray.gif",
-"boxobligmonitored_new.gif",
-"boxobligmonitored_new_en.gif",
-"boxobligmonitored_new_en_gray.gif",
-"boxobligmonitored_new_gray.gif",
-"boxoblig_en.gif",
-"boxoblig_en_gray.gif",
-"boxoblig_gray.gif",
-"boxoblig_new.gif",
-"boxoblig_new_en.gif",
-"boxoblig_new_en_gray.gif",
-"boxoblig_new_gray.gif"
-		};
-		Random rnd = new Random();
-		tree.setChildrenAllowed(i,(k<3?true:false));
-		tree.setItemCaption(i, "Component " + i);	
-		if (k < 3)
-		for (int j = 1; j < 10;j++){
-			int id = makeTree(tree,i*10+j,k+1);
-			tree.addItem(id);
-			tree.setParent(id,i);			
-			tree.setItemIcon(id,new ThemeResource("icons/"+icon[rnd.nextInt(32)]));
-		}		
-		return i;
-	}
+
+    // NEW 161004
+    private int makeTree(Tree tree, int i, int k) {
+        String icon = "boxed-blue.png";
+
+        tree.setChildrenAllowed(i, (k < 3 ? true : false));
+        tree.setItemCaption(i, "Component " + i);
+        if (k < 3)
+            for (int j = 1; j < 10; j++) {
+                int id = makeTree(tree, i * 10 + j, k + 1);
+                tree.addItem(id);
+                tree.setParent(id, i);
+                tree.setItemIcon(id, new ThemeResource("newicons/" + icon));
+            }
+        return i;
+    }
+
+
     private VerticalLayout buildLeftLayout() {
         final VerticalLayout leftLayout = new VerticalLayout();
         leftLayout.setWidth("50%");
@@ -318,14 +318,13 @@ public class MyUI extends UI {
                 "Ohne Titel nur text (neu) 2",
                 "Ohne Titel nur text (neu) 3",
                 "Ohne Titel nur text (neu) 4");
-			// NEW 161004	
-		  final Tree tree = new Tree();
+        // NEW 161004
+        final Tree tree = new Tree();
 
         for (int i = 0; i < 10; i++) { // 10*10 elements
-            tree.addItem(makeTree(tree,i,0));
+            tree.addItem(makeTree(tree, i, 0));
         }
-        
-     
+
 
         final CheckBox checkbox1 = new CheckBox("Cobertura di base", true);
         checkbox1.addStyleName("v-green-checker");
@@ -343,10 +342,8 @@ public class MyUI extends UI {
 
         leftLayout.addComponents(firstTextField, secondTextField, thirdTextField);
         // leftLayout.addComponents(options, checkbox1, checkbox2, checkbox3, checkbox4, checkbox5, checkbox6, checkbox7, checkbox8, checkbox9);
-		   leftLayout.addComponent(tree);
+        leftLayout.addComponent(tree);
         return leftLayout;
-
-
 
 
     }
