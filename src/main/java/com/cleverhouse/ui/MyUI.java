@@ -31,28 +31,10 @@ public class MyUI extends UI {
     @Override
     protected void init(VaadinRequest vaadinRequest) {
         VerticalLayout mainLayout = new VerticalLayout();
-        mainLayout.setWidth("80%");
+        mainLayout.setWidth("100%");
         mainLayout.setMargin(true);
 
-//        final GridLayout horizontalLayout = new GridLayout(2, 1);
-//        horizontalLayout.setWidth("90%");
-//        horizontalLayout.addStyleName("v-gray-bordered");
-//        horizontalLayout.addStyleName("v-left-margined");
-//        horizontalLayout.setMargin(true);
-//
-//
-//        final VerticalLayout rightLayout = buildRightLayout();
-//
-//        final VerticalLayout leftLayout = buildLeftLayout();
-//
-//
-//        horizontalLayout.addComponents(leftLayout, rightLayout);
-//        horizontalLayout.addStyleName("v-gray-bordered");
-//
-//        mainLayout.addComponent(horizontalLayout);
-
         buildNerwSecondPage(mainLayout);
-        //buildSecondPage(mainLayout);
 
 
         setContent(mainLayout);
@@ -67,7 +49,6 @@ public class MyUI extends UI {
 
         final Button primaryButton = new Button("Primary");
         primaryButton.setStyleName("v-button-primary");
-
 
         final Button grayedOutButton = new Button("Grayed Out");
         grayedOutButton.setStyleName("v-button-grayedout");
@@ -143,12 +124,14 @@ public class MyUI extends UI {
         item1.addItem("Subitem 2", command);
         subItem.addItem("SubSubitem", command);
 
-
-        Table table = makeATable();
+        Table table = new Table("Table");
+        table.setContainerDataSource(new BeanItemContainer<>(SomeData.class, service.spamData(25)));
         table.addStyleName(ValoTheme.TABLE_BORDERLESS);
         table.addStyleName(ValoTheme.TABLE_NO_VERTICAL_LINES);
         table.addStyleName(ValoTheme.TABLE_NO_STRIPES);
         table.addStyleName("v-table-normal");
+
+
 
 
         BuildComplexForm buildComplexForm = new BuildComplexForm(combobox).invoke();
@@ -161,139 +144,26 @@ public class MyUI extends UI {
         layout.addComponents(normalLabel, grayedOutLabel);
         layout.addComponents(combobox, grayCombobox);
         layout.addComponents(textFieldGrayCaption, mandatoryTextField);
-        layout.addComponents(datefield,datefield2);
+        layout.addComponents(datefield, datefield2);
         layout.addComponent(tree);
         layout.addComponent(menuBar);
         layout.addComponent(table);
         layout.addComponent(panel);
 
+
+        Panel formPanel = new Panel("Form Panel");
+        formPanel.addStyleName(ValoTheme.PANEL_BORDERLESS);
+        HorizontalLayout hLayout = new HorizontalLayout();
+        hLayout.setMargin(true);
+        hLayout.setSizeFull();
+        FormLayout form1 = buildLeftLayout();
+        FormLayout form2 = buildRightLayout();
+        hLayout.addComponents(form1, form2);
+        formPanel.setContent(hLayout);
+
+        layout.addComponents(formPanel);
     }
 
-   /* void buildSecondPage(VerticalLayout layout) {
-        //makeATable(layout);
-
-        final TextField textField = new TextField();
-        textField.setCaption("Standard text field");
-
-        final DateField dateField = new DateField();
-        dateField.setCaption("Date field");
-        dateField.setValue(new Date());
-
-        final TextField numberField = new TextField();
-        numberField.setConverter(Integer.class);
-        numberField.setCaption("Integer field");
-        numberField.setValue("0");
-        numberField.setStyleName("v-mandatory-field");
-
-        final ListSelect selectList = new ListSelect("List");
-        selectList.addItems("Entry A", "Entry B", "Entry C");
-        selectList.setNullSelectionAllowed(false);
-        selectList.setRows(3);
-
-        final Button moveLeftButton = new Button();
-        moveLeftButton.setIcon(FontAwesome.ARROW_LEFT);
-        moveLeftButton.setStyleName("v-move-left-button");
-
-
-        final Button moveRightButton = new Button("-->");
-        moveRightButton.setCaption("Move item right");
-
-
-        final Button selectButton = new Button("SELECT");
-        selectButton.setCaption("Normal button");
-        final ComboBox comboBox = new ComboBox("Combobox");
-
-        final OptionGroup checkboxGroup = new OptionGroup("Checkboxes");
-        checkboxGroup.addItems("One", "Two", "Three");
-
-        final OptionGroup checkboxMultiselect = new OptionGroup("Checkboxes");
-        checkboxMultiselect.addItems("One", "Two", "Three");
-        checkboxMultiselect.setMultiSelect(true);
-
-        final MenuBar menuBar = new MenuBar();
-        menuBar.setCaption("MenuBar");
-        MenuBar.Command command = new MenuBar.Command() {
-            @Override
-            public void menuSelected(MenuBar.MenuItem menuItem) {
-                Notification.show(menuItem.getText() + "selected");
-            }
-        };
-        MenuBar.MenuItem item1 = menuBar.addItem("Item1", null, null);
-        menuBar.addItem("Item2", command);
-        menuBar.addItem("Item3", command);
-
-        MenuBar.MenuItem subItem = item1.addItem("Subitem 1", null, null);
-        item1.addItem("Subitem 2", command);
-
-        subItem.addItem("SubSubitem", command);
-
-        CustomLayout loginLayout = buildLoginLayout();
-
-        layout.addComponent(textField);
-        layout.addComponent(dateField);
-        layout.addComponent(numberField);
-        layout.addComponent(selectList);
-        layout.addComponent(moveLeftButton);
-        layout.addComponent(moveLeftButton);
-        layout.addComponent(moveRightButton);
-        layout.addComponent(selectButton);
-        layout.addComponent(comboBox);
-        layout.addComponent(checkboxGroup);
-        layout.addComponent(checkboxMultiselect);
-        layout.addComponent(menuBar);
-        layout.addComponent(new Label("Grid example"));
-        makeATable();
-        layout.addComponent(loginLayout);
-
-        // NEW 161004
-
-        TextArea area = new TextArea("Big Area");
-        area.setValue("A row\n" +
-                "Another row\n" +
-                "Yet another row" +
-                "Another row\n" +
-                "Another row\n" + "Another row\n" + "Another row\n" + "Another row\n" + "Another row\n" + "Another row\n");
-
-        area.setHeight("150px");
-        area.setWidth("150px");
-        layout.addComponent(area);
-        HorizontalLayout hl = new HorizontalLayout();
-        hl.setWidth("-1px");
-        Button a = new Button();
-        Button b = new Button();
-        Button c = new Button();
-        Button d = new Button();
-        a.setIcon(new ThemeResource("icons/save.gif"));
-        b.setIcon(new ThemeResource("icons/saveAll.gif"));
-        c.setIcon(new ThemeResource("icons/saveAndPrint.gif"));
-        d.setIcon(new ThemeResource("icons/saveAs.gif"));
-        hl.addComponent(a);
-        hl.addComponent(b);
-        hl.addComponent(c);
-        hl.addComponent(d);
-        hl.setSpacing(true);
-        hl.setCaption("Toolbar");
-        layout.addComponent(hl);
-        setContent(layout);
-    }*/
-
-    private CustomLayout buildLoginLayout() {
-        CustomLayout loginLayout = new CustomLayout("loginLayout");
-
-        loginLayout.addComponent(new TextField(), "username");
-        loginLayout.addComponent(new TextField(), "password");
-        loginLayout.addComponent(new Button("Login"), "okbutton");
-
-        loginLayout.setSizeUndefined();
-        return loginLayout;
-    }
-
-
-    private Table makeATable() {
-        Table table = new Table("Table");
-        table.setContainerDataSource(new BeanItemContainer<>(SomeData.class, service.spamData(7)));
-        return table;
-    }
 
     // NEW 161004
     private int makeTree(Tree tree, int i, int k) {
@@ -312,56 +182,52 @@ public class MyUI extends UI {
     }
 
 
-    private VerticalLayout buildLeftLayout() {
-        final VerticalLayout leftLayout = new VerticalLayout();
-        leftLayout.setWidth("50%");
+    private FormLayout buildLeftLayout() {
+        final FormLayout leftLayout = new FormLayout();
 
         TextField firstTextField = new TextField("Geshafts-identifikation");
         firstTextField.setWidth("100%");
+        firstTextField.addStyleName(ValoTheme.TEXTFIELD_BORDERLESS);
+        firstTextField.addStyleName("v-textfield-mandatory");
         TextField secondTextField = new TextField("SecondText");
         secondTextField.setWidth("100%");
+        secondTextField.addStyleName("v-textfield-normal");
+        secondTextField.addStyleName(ValoTheme.TEXTFIELD_BORDERLESS);
         TextField thirdTextField = new TextField("ThirdText");
         thirdTextField.setWidth("100%");
+        thirdTextField.addStyleName("v-textfield-normal");
+        thirdTextField.addStyleName(ValoTheme.TEXTFIELD_BORDERLESS);
 
-        OptionGroup options = new OptionGroup();
-        options.setMultiSelect(true);
-        options.addItems(
-                "Ohne Titel nur text (neu) 1",
-                "Ohne Titel nur text (neu) 2",
-                "Ohne Titel nur text (neu) 3",
-                "Ohne Titel nur text (neu) 4");
-        // NEW 161004
+        DateField datefield = new DateField("Date");
+        datefield.addStyleName(ValoTheme.DATEFIELD_BORDERLESS);
+        datefield.addStyleName("v-datefield-normal");
+
+
+//        OptionGroup options = new OptionGroup();
+//        options.setMultiSelect(true);
+//        options.addItems(
+//                "Ohne Titel nur text (neu) 1",
+//                "Ohne Titel nur text (neu) 2",
+//                "Ohne Titel nur text (neu) 3",
+//                "Ohne Titel nur text (neu) 4");
+//        // NEW 161004
         final Tree tree = new Tree();
-
+        tree.addStyleName(ValoTheme.TREETABLE_BORDERLESS);
+        tree.addStyleName("v-tree-normal");
         for (int i = 0; i < 10; i++) { // 10*10 elements
             tree.addItem(makeTree(tree, i, 0));
         }
 
-
-        final CheckBox checkbox1 = new CheckBox("Cobertura di base", true);
-        checkbox1.addStyleName("v-green-checker");
-        final CheckBox checkbox2 = new CheckBox("Ohne Titel nur text (neu)", true);
-        checkbox2.addStyleName("v-green-checker");
-        final CheckBox checkbox3 = new CheckBox("Somme di Assicurazione (OCC)", true);
-        checkbox3.addStyleName("v-green-checker");
-        final CheckBox checkbox4 = new CheckBox("Limiti per CC", true);
-        checkbox4.addStyleName("v-green-checker");
-        final CheckBox checkbox5 = new CheckBox("Franchigie", true);
-        final CheckBox checkbox6 = new CheckBox("Premi", true);
-        final CheckBox checkbox7 = new CheckBox("Exclusioni generali");
-        final CheckBox checkbox8 = new CheckBox("Partecipazione all'eccedenza di premio (Domestic)");
-        final CheckBox checkbox9 = new CheckBox("Selezione destinatari copie");
-
-        leftLayout.addComponents(firstTextField, secondTextField, thirdTextField);
-        // leftLayout.addComponents(options, checkbox1, checkbox2, checkbox3, checkbox4, checkbox5, checkbox6, checkbox7, checkbox8, checkbox9);
+        leftLayout.addComponents(firstTextField, secondTextField, thirdTextField, datefield);
         leftLayout.addComponent(tree);
+
         return leftLayout;
 
 
     }
 
-    private VerticalLayout buildRightLayout() {
-        final VerticalLayout rightMainLayout = new VerticalLayout();
+    private FormLayout buildRightLayout() {
+        final FormLayout rightMainLayout = new FormLayout();
 
         final Panel rightPanel = new Panel("Ohne Titel nur text (neu)");
         rightPanel.addStyleName("v-gray-bordered");
@@ -378,6 +244,8 @@ public class MyUI extends UI {
         final TextField tf4 = buildTextField("VN; PLZ/Ort", "100%", "v-mandatory-field");
 
         ComboBox cb1 = new ComboBox("VN; Landcode");
+        cb1.addStyleName(ValoTheme.COMBOBOX_BORDERLESS);
+        cb1.addStyleName("v-combobox-normal");
 
         final TextField tf5 = buildTextField("Risikogruppe", "100%", null);
         final TextField tf6 = buildTextField("Nogacode", "100%", null);
@@ -398,7 +266,7 @@ public class MyUI extends UI {
 
         vertical.addComponent(rightForm);
         rightPanel.setContent(vertical);
-
+        rightPanel.addStyleName(ValoTheme.PANEL_BORDERLESS);
         rightMainLayout.addComponent(rightPanel);
 
         HorizontalLayout hl = new HorizontalLayout();
@@ -414,6 +282,8 @@ public class MyUI extends UI {
     private TextField buildTextField(final String caption, final String width, final String styleName) {
         final TextField tf1 = new TextField(caption);
         tf1.setWidth("100%");
+        tf1.addStyleName(ValoTheme.TEXTFIELD_BORDERLESS);
+        tf1.addStyleName("v-textfield-normal");
         tf1.addStyleName(styleName);
         return tf1;
     }

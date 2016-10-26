@@ -13257,8 +13257,6 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .mytheme .v-caption-v-tree-normal {
-	width: 240px;
-	height: 30px;
 	font-family: OpenSans, sans-serif;
 	font-size: 16px;
 	font-weight: normal;
@@ -13269,8 +13267,6 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .mytheme .v-caption-v-tree-normal .v-captiontext {
-	width: 80px;
-	height: 22px;
 	font-family: OpenSans, sans-serif;
 	font-size: 16px;
 	font-weight: normal;
@@ -13341,8 +13337,6 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .mytheme .v-table-normal .v-table-row .v-table-cell-content, .mytheme .v-table-normal .v-table-row-odd .v-table-cell-content {
-	width: 90px;
-	height: 19px;
 	font-family: OpenSans, sans-serif;
 	font-size: 14px;
 	font-weight: normal;
@@ -13369,6 +13363,10 @@ div.v-layout.v-horizontal.v-widget {
 .mytheme .v-table-normal .v-table-header-cell, .mytheme .v-table-normal .v-table-header-cell-asc, .mytheme .v-table-normal .v-table-header-cell-desc {
 	border: none;
 	background: white;
+}
+
+.mytheme .v-table-body {
+	height: initial;
 }
 
 .mytheme .v-table-normal .v-table-caption-container {

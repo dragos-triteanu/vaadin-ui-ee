@@ -2,6 +2,29 @@ $ui_gray: #7e8081;
 $font: OpenSans, sans-serif;
 $ui_blue: #34657f;
 $dark_gray: #535658;
+$success-button-color: #51ba74;
+$danger-button-color: #cc7252;
+$primary-button-color: #34657f;
+$grayedout-button-color: #eaeaea;
+$label_normal_color: #34657f;
+$label_grayedout_color: #eaeaea;
+
+$button_width: 240px;
+$button_height: 40px;
+$label_width: 240px;
+$label_height: 40px;
+$combobox_width: 240px;
+$combobox_height: 26px;
+$textfield_width: 240px;
+$textfield_height: 26px;
+$datefield_width: 240px;
+$datefield_height: 26px;
+$tree_item_height: 30px;
+$tree_item_width: 200px;
+
+
+
+
 @mixin overrides {
 
   .mytheme .v-button:after {
@@ -25,13 +48,6 @@ $dark_gray: #535658;
   }
 
   //* BUTTONS *//
-  $button_width: 240px;
-  $button_height: 40px;
-
-  $success-button-color: #51ba74;
-  $danger-button-color: #cc7252;
-  $primary-button-color: #34657f;
-  $grayedout-button-color: #eaeaea;
 
   .button-common {
     width: $button_width;
@@ -72,11 +88,6 @@ $dark_gray: #535658;
   }
 
   /* LABELS */
-  $label_width: 240px;
-  $label_height: 40px;
-
-  $label_normal_color: #34657f;
-  $label_grayedout_color: #eaeaea;
 
   .label-common {
     padding-top: 13px;
@@ -102,8 +113,6 @@ $dark_gray: #535658;
   }
 
   /* COMBOBOXES */
-  $combobox_width: 240px;
-  $combobox_height: 26px;
 
   .combobox-common {
     width: $combobox_width;
@@ -197,9 +206,6 @@ $dark_gray: #535658;
 
   /* TEXTFIELDS */
 
-  $textfield_width: 240px;
-  $textfield_height: 26px;
-
   .textfield-common {
     width: $textfield_width;
     height: $textfield_height;
@@ -232,8 +238,6 @@ $dark_gray: #535658;
   }
 
   /** DATEFIELD**/
-  $datefield_width: 240px;
-  $datefield_height: 26px;
 
   .v-datefield-normal {
   }
@@ -322,9 +326,6 @@ $dark_gray: #535658;
 
   /** TREE **/
 
-  $tree_item_height: 30px;
-  $tree_item_width: 200px;
-
   .v-tree-normal .v-tree-node-caption {
     height: $tree_item_height;
     width: $tree_item_width;
@@ -377,8 +378,6 @@ $dark_gray: #535658;
   }
 
   .v-caption-v-tree-normal {
-    width: 240px;
-    height: 30px;
     font-family: $font;
     font-size: 16px;
     font-weight: normal;
@@ -389,8 +388,6 @@ $dark_gray: #535658;
   }
 
   .v-caption-v-tree-normal .v-captiontext {
-    width: 80px;
-    height: 22px;
     font-family: $font;
     font-size: 16px;
     font-weight: normal;
@@ -467,8 +464,6 @@ $dark_gray: #535658;
   }
 
   .v-table-normal .v-table-row .v-table-cell-content, .v-table-normal .v-table-row-odd .v-table-cell-content {
-    width: 90px;
-    height: 19px;
     font-family: $font;
     font-size: 14px;
     font-weight: normal;
@@ -476,7 +471,6 @@ $dark_gray: #535658;
     font-stretch: normal;
     color: #7e8081;
   }
-
 
   .v-table-normal .v-table-row {
     height: 30px;
@@ -498,6 +492,10 @@ $dark_gray: #535658;
     background: white;
   }
 
+  .v-table-body{
+    height: initial;
+  }
+
   .v-table-normal .v-table-caption-container {
     border: none;
     background: transparent none;
@@ -510,15 +508,6 @@ $dark_gray: #535658;
     color: #535658;
   }
 
-  .v-table-normal .v-table-body{
-    //width: calc(100% - 20px);
-    //margin-left:10px;
-  }
-
-  .v-table-normal .v-table-body {
-    //padding-left: 10px;
-    //padding-right: 10px;
-  }
 
   // Insert your own theme rules here
 }
