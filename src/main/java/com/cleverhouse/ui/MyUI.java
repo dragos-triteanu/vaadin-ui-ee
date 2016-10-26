@@ -115,6 +115,11 @@ public class MyUI extends UI {
         datefield.setCaption("Caption");
         datefield.addStyleName("v-datefield-normal");
 
+        final DateField datefield2 = new DateField();
+        datefield2.addStyleName(ValoTheme.DATEFIELD_BORDERLESS);
+        datefield2.setCaption("Caption");
+        datefield2.addStyleName("v-datefield-mandatory");
+
         final Tree tree = new Tree("Tree");
         tree.addStyleName("v-tree-normal");
         for (int i = 0; i < 10; i++) { // 10*10 elements
@@ -146,14 +151,21 @@ public class MyUI extends UI {
         table.addStyleName("v-table-normal");
 
 
+        BuildComplexForm buildComplexForm = new BuildComplexForm(combobox).invoke();
+        Panel panel = buildComplexForm.getPanel();
+        FormLayout form = buildComplexForm.getForm();
+
+        panel.setContent(form);
+
         layout.addComponents(dangerButton, primaryButton, grayedOutButton, successButton);
         layout.addComponents(normalLabel, grayedOutLabel);
         layout.addComponents(combobox, grayCombobox);
         layout.addComponents(textFieldGrayCaption, mandatoryTextField);
-        layout.addComponent(datefield);
+        layout.addComponents(datefield,datefield2);
         layout.addComponent(tree);
         layout.addComponent(menuBar);
         layout.addComponent(table);
+        layout.addComponent(panel);
 
     }
 
@@ -410,5 +422,74 @@ public class MyUI extends UI {
     @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
     @VaadinServletConfiguration(ui = MyUI.class, productionMode = false)
     public static class MyUIServlet extends VaadinServlet {
+    }
+
+    private class BuildComplexForm {
+        private ComboBox combobox;
+        private Panel panel;
+        private FormLayout form;
+
+        public BuildComplexForm(ComboBox combobox) {
+            this.combobox = combobox;
+        }
+
+        public Panel getPanel() {
+            return panel;
+        }
+
+        public FormLayout getForm() {
+            return form;
+        }
+
+        public BuildComplexForm invoke() {
+            panel = new Panel("PANEL 1");
+            TextField txtForPanel = new TextField("Txt 1");
+            txtForPanel.setStyleName(ValoTheme.TEXTFIELD_BORDERLESS);
+            txtForPanel.addStyleName("v-textfield-normal");
+
+            final ComboBox comboboxForPanel = new ComboBox("Caption");
+            comboboxForPanel.addStyleName(ValoTheme.COMBOBOX_BORDERLESS);
+            comboboxForPanel.addStyleName("v-combobox-normal");
+            comboboxForPanel.addItem("One");
+            comboboxForPanel.addItem("Two");
+            comboboxForPanel.addItem("Drei");
+            comboboxForPanel.setNullSelectionAllowed(false);
+            comboboxForPanel.setValue(combobox.getItemIds().iterator().next());
+
+
+            Panel panel2 = new Panel("PANEL 2");
+            FormLayout secondForm = new FormLayout();
+            secondForm.setMargin(true);
+            TextField txtForPanel2 = new TextField("Txt 2");
+            txtForPanel2.setStyleName(ValoTheme.TEXTFIELD_BORDERLESS);
+            txtForPanel2.addStyleName("v-textfield-mandatory");
+            secondForm.addComponent(txtForPanel2);
+
+
+            Panel panel3 = new Panel("PANEL 3");
+            FormLayout thirdLayout = new FormLayout();
+            thirdLayout.setMargin(true);
+            TextField txt3 = new TextField("Txt 3");
+            txt3.setStyleName(ValoTheme.TEXTFIELD_BORDERLESS);
+            txt3.addStyleName("v-textfield-normal");
+            thirdLayout.addComponent(txt3);
+            panel3.setContent(thirdLayout);
+
+            final DateField datefield = new DateField();
+            datefield.addStyleName(ValoTheme.DATEFIELD_BORDERLESS);
+            datefield.setCaption("A date");
+            datefield.addStyleName("v-datefield-mandatory");
+            secondForm.addComponent(panel3);
+            secondForm.addComponent(datefield);
+
+            panel2.setContent(secondForm);
+
+            form = new FormLayout();
+            form.setMargin(true);
+            form.addComponent(txtForPanel);
+            form.addComponent(comboboxForPanel);
+            form.addComponent(panel2);
+            return this;
+        }
     }
 }

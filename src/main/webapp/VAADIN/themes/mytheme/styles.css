@@ -13137,6 +13137,55 @@ div.v-layout.v-horizontal.v-widget {
 	opacity: 0.2 !important;
 }
 
+.mytheme .v-datefield-normal .v-datefield-calendarpanel-day.v-datefield-calendarpanel-day-selected, .mytheme .v-datefield-mandatory .v-datefield-calendarpanel-day.v-datefield-calendarpanel-day-selected {
+	background-color: #34657f !important;
+	color: white;
+}
+
+.mytheme .v-datefield-normal .v-datefield-calendarpanel-weekdays td[role='columnheader'], .mytheme .v-datefield-mandatory .v-datefield-calendarpanel-weekdays td[role='columnheader'] {
+	font-family: OpenSans, sans-serif;
+	font-size: 10px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	text-align: center;
+	color: #7e8081;
+}
+
+.mytheme .v-datefield-normal .v-datefield-calendarpanel-day-offmonth, .mytheme .v-datefield-mandatory .v-datefield-calendarpanel-day-offmonth {
+	opacity: 0.6;
+}
+
+.mytheme .v-datefield-normal .v-datefield-calendarpanel-month, .mytheme .v-datefield-mandatory .v-datefield-calendarpanel-month {
+	font-family: OpenSans, sans-serif;
+	font-size: 12px;
+	font-weight: 600;
+	font-style: normal;
+	font-stretch: normal;
+	text-align: center;
+	color: #535658;
+}
+
+.mytheme .v-datefield-normal .v-datefield-calendarpanel-day, .mytheme .v-datefield-mandatory .v-datefield-calendarpanel-day {
+	background: transparent !important;
+	font-family: OpenSans, sans-serif;
+	font-size: 12px;
+	font-weight: 600;
+	font-style: normal;
+	font-stretch: normal;
+	text-align: center;
+	color: #7e8081;
+}
+
+.mytheme .v-datefield-normal .v-datefield-calendarpanel-day-focused, .mytheme .v-datefield-mandatory .v-datefield-calendarpanel-day-focused {
+	border: none !important;
+	box-shadow: none !important;
+}
+
+.mytheme .v-datefield-normal .v-datefield-calendarpanel-day:hover, .mytheme .v-datefield-mandatory .v-datefield-calendarpanel-day:hover {
+	color: #34657f;
+}
+
 .mytheme .v-datefield-normal .v-datefield-button, .mytheme .v-datefield-mandatory .v-datefield-button {
 	margin-left: 200px;
 	margin-bottom: 10px;
@@ -13302,9 +13351,8 @@ div.v-layout.v-horizontal.v-widget {
 	color: #7e8081;
 }
 
-.mytheme .v-table-normal .v-table-row:not(:first-of-type), .mytheme .v-table-normal .v-table-row-odd:not(:first-of-type) {
-	margin-left: 20px;
-	margin-right: 20px;
+.mytheme .v-table-normal .v-table-row {
+	height: 30px;
 }
 
 .mytheme .v-caption-v-table-normal {
