@@ -132,8 +132,6 @@ public class MyUI extends UI {
         table.addStyleName("v-table-normal");
 
 
-
-
         BuildComplexForm buildComplexForm = new BuildComplexForm(combobox).invoke();
         Panel panel = buildComplexForm.getPanel();
         FormLayout form = buildComplexForm.getForm();
@@ -148,6 +146,27 @@ public class MyUI extends UI {
         layout.addComponent(tree);
         layout.addComponent(menuBar);
         layout.addComponent(table);
+
+
+
+//        HorizontalLayout toolbarInside = new HorizontalLayout();
+//        toolbarInside.addStyleName("v-toolbar-inside");
+//        Button btn1 = new Button("One");
+//        btn1.addStyleName(ValoTheme.BUTTON_BORDERLESS);
+//        btn1.addStyleName("v-toolbar-button");
+//        Button btn2 = new Button("Two");
+//        btn2.addStyleName("v-toolbar-button");
+//        btn2.addStyleName(ValoTheme.BUTTON_BORDERLESS);
+//        Button btn3 = new Button("Tree");
+//        btn3.addStyleName("v-toolbar-button");
+//        btn3.addStyleName(ValoTheme.BUTTON_BORDERLESS);
+//        Button btn4 = new Button("Four");
+//        btn4.addStyleName("v-toolbar-button");
+//        btn4.addStyleName(ValoTheme.BUTTON_BORDERLESS);
+//        toolbarInside.addComponents(btn1, btn2, btn3, btn4);
+//        layout.addComponent(toolbarInside);
+
+
         layout.addComponent(panel);
 
 
@@ -161,7 +180,10 @@ public class MyUI extends UI {
         hLayout.addComponents(form1, form2);
         formPanel.setContent(hLayout);
 
+
         layout.addComponents(formPanel);
+
+
     }
 
 

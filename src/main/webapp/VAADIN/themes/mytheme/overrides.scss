@@ -22,9 +22,6 @@ $datefield_height: 26px;
 $tree_item_height: 30px;
 $tree_item_width: 200px;
 
-
-
-
 @mixin overrides {
 
   .mytheme .v-button:after {
@@ -242,12 +239,12 @@ $tree_item_width: 200px;
   .v-datefield-normal {
   }
 
-  .v-datefield-normal .v-datefield-calendarpanel-day.v-datefield-calendarpanel-day-selected{
+  .v-datefield-normal .v-datefield-calendarpanel-day.v-datefield-calendarpanel-day-selected {
     background-color: $ui_blue !important;
     color: white;
   }
 
-  .v-datefield-normal .v-datefield-calendarpanel-weekdays td[role='columnheader']{
+  .v-datefield-normal .v-datefield-calendarpanel-weekdays td[role='columnheader'] {
     font-family: $font;
     font-size: 10px;
     font-weight: normal;
@@ -257,10 +254,9 @@ $tree_item_width: 200px;
     color: #7e8081;
   }
 
-  .v-datefield-normal .v-datefield-calendarpanel-day-offmonth{
+  .v-datefield-normal .v-datefield-calendarpanel-day-offmonth {
     opacity: 0.6;
   }
-
 
   .v-datefield-normal .v-datefield-calendarpanel-month {
     font-family: $font;
@@ -282,7 +278,6 @@ $tree_item_width: 200px;
     text-align: center;
     color: #7e8081;
   }
-
 
   .v-datefield-normal .v-datefield-calendarpanel-day-focused {
     border: none !important;
@@ -398,8 +393,30 @@ $tree_item_width: 200px;
 
   /** MENUBAR **/
   .v-menubar-normal {
-
+    border-radius: 4px;
+    border: solid 1px #eaeaea;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 9px;
+    padding-bottom: 10px;
+    height: 50px;
   }
+
+  .v-menubar-normal .v-menubar-menuitem {
+    border-right: 1px solid #eaeaea;
+    border-radius: 0px !important;
+    height: 30px;
+  }
+
+  .v-menubar-normal .v-menubar-menuitem:hover {
+    background-color: $ui_blue;
+    border-radius: 4px !important;
+  }
+
+  .v-menubar-normal .v-menubar-menuitem:hover .v-menubar-menuitem-caption {
+    color: white;
+  }
+
 
   .v-caption-v-menubar-normal {
     width: 86px;
@@ -428,6 +445,15 @@ $tree_item_width: 200px;
 
   .v-menubar-popup .v-menubar-menuitem:hover .v-menubar-menuitem-caption {
     color: #ffffff;
+  }
+
+  .v-menubar-normal .v-menubar-menuitem-caption {
+    font-family: $font;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    color: #7e8081;
   }
 
   .v-menubar-popup .v-menubar-menuitem .v-menubar-menuitem-caption {
@@ -492,7 +518,7 @@ $tree_item_width: 200px;
     background: white;
   }
 
-  .v-table-body{
+  .v-table-body {
     height: initial;
   }
 
@@ -508,6 +534,31 @@ $tree_item_width: 200px;
     color: #535658;
   }
 
+  /** TOOLBAR **/
+  //.v-toolbar-normal {
+  //  border-radius: 4px;
+  //  border: solid 1px #eaeaea;
+  //  padding: 10px 20px;
+  //}
+  //
+  //.v-toolbar-button {
+  //  background-color: white !important;
+  //  border-radius: 0px;
+  //  margin-right: 1px;
+  //}
+  //
+  //.v-toolbar-inside .v-slot:not(:last-child){
+  //  border: none;
+  //  margin-right: 1px;
+  //}
+  //
+  //.v-toolbar-normal .v-toolbar-button:last-child {
+  //  border-right: none;
+  //}
+  //
+  //.v-toolbar-inside {
+  //  background-color: darkred;
+  //}
 
   // Insert your own theme rules here
 }

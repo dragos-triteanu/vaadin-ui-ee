@@ -13275,6 +13275,31 @@ div.v-layout.v-horizontal.v-widget {
 	color: #535658;
 }
 
+.mytheme .v-menubar-normal {
+	border-radius: 4px;
+	border: solid 1px #eaeaea;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top: 9px;
+	padding-bottom: 10px;
+	height: 50px;
+}
+
+.mytheme .v-menubar-normal .v-menubar-menuitem {
+	border-right: 1px solid #eaeaea;
+	border-radius: 0px !important;
+	height: 30px;
+}
+
+.mytheme .v-menubar-normal .v-menubar-menuitem:hover {
+	background-color: #34657f;
+	border-radius: 4px !important;
+}
+
+.mytheme .v-menubar-normal .v-menubar-menuitem:hover .v-menubar-menuitem-caption {
+	color: white;
+}
+
 .mytheme .v-caption-v-menubar-normal {
 	width: 86px;
 	height: 22px;
@@ -13302,6 +13327,15 @@ div.v-layout.v-horizontal.v-widget {
 
 .mytheme .v-menubar-popup .v-menubar-menuitem:hover .v-menubar-menuitem-caption {
 	color: #ffffff;
+}
+
+.mytheme .v-menubar-normal .v-menubar-menuitem-caption {
+	font-family: OpenSans, sans-serif;
+	font-size: 14px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	color: #7e8081;
 }
 
 .mytheme .v-menubar-popup .v-menubar-menuitem .v-menubar-menuitem-caption {
