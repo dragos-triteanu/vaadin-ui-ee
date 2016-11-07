@@ -9,6 +9,7 @@ import com.vaadin.annotations.StyleSheet;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.data.util.BeanItemContainer;
+import com.vaadin.server.FontAwesome;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.*;
@@ -67,11 +68,11 @@ public class MyUI extends UI {
         textFieldGrayCaption.setStyleName(ValoTheme.TEXTFIELD_BORDERLESS);
         textFieldGrayCaption.addStyleName("v-textfield-normal");
 
-        final TextField mandatoryTextField = new TextField("Caption");
+        final TextField mandatoryTextField = new TextField("");
         mandatoryTextField.setInputPrompt("Placeholder");
         mandatoryTextField.setStyleName(ValoTheme.TEXTFIELD_BORDERLESS);
         mandatoryTextField.addStyleName("v-textfield-mandatory");
-
+        mandatoryTextField.setIcon(FontAwesome.CIRCLE);
 
         final ComboBox combobox = new ComboBox("Caption");
         combobox.addStyleName(ValoTheme.COMBOBOX_BORDERLESS);
@@ -82,7 +83,7 @@ public class MyUI extends UI {
         combobox.setNullSelectionAllowed(false);
         combobox.setValue(combobox.getItemIds().iterator().next());
 
-        final ComboBox grayCombobox = new ComboBox("Caption");
+        final ComboBox grayCombobox = new ComboBox("");
         grayCombobox.addStyleName(ValoTheme.COMBOBOX_BORDERLESS);
         grayCombobox.addStyleName("v-combobox-mandatory");
         grayCombobox.addItem("One");
@@ -90,16 +91,17 @@ public class MyUI extends UI {
         grayCombobox.addItem("Drei");
         grayCombobox.setNullSelectionAllowed(false);
         grayCombobox.setValue(grayCombobox.getItemIds().iterator().next());
+        grayCombobox.setIcon(FontAwesome.CIRCLE);
 
         final DateField datefield = new DateField();
         datefield.addStyleName(ValoTheme.DATEFIELD_BORDERLESS);
         datefield.setCaption("Caption");
         datefield.addStyleName("v-datefield-normal");
 
-        final DateField datefield2 = new DateField();
+        final DateField datefield2 = new DateField("");
         datefield2.addStyleName(ValoTheme.DATEFIELD_BORDERLESS);
-        datefield2.setCaption("Caption");
         datefield2.addStyleName("v-datefield-mandatory");
+        datefield2.setIcon(FontAwesome.CIRCLE);
 
         final Tree tree = new Tree("Tree");
         tree.addStyleName("v-tree-normal");
@@ -353,6 +355,7 @@ public class MyUI extends UI {
             FormLayout secondForm = new FormLayout();
             secondForm.setMargin(true);
             TextField txtForPanel2 = new TextField("Txt 2");
+            txtForPanel2.setIcon(FontAwesome.CIRCLE);
             txtForPanel2.setStyleName(ValoTheme.TEXTFIELD_BORDERLESS);
             txtForPanel2.addStyleName("v-textfield-mandatory");
             secondForm.addComponent(txtForPanel2);
@@ -370,6 +373,7 @@ public class MyUI extends UI {
             final DateField datefield = new DateField();
             datefield.addStyleName(ValoTheme.DATEFIELD_BORDERLESS);
             datefield.setCaption("A date");
+            datefield.setIcon(FontAwesome.CIRCLE);
             datefield.addStyleName("v-datefield-mandatory");
             secondForm.addComponent(panel3);
             secondForm.addComponent(datefield);

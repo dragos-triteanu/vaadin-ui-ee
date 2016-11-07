@@ -12988,6 +12988,13 @@ div.v-layout.v-horizontal.v-widget {
 	color: #7e8081;
 }
 
+.mytheme .mandatory-caption-bullet {
+	width: 6px !important;
+	height: 6px !important;
+	border-radius: 4px;
+	background-color: #34657f;
+}
+
 .mytheme .button-common, .mytheme .v-button.v-button-success, .mytheme .v-button.v-button-danger, .mytheme .v-button.v-button-primary, .mytheme .v-button.v-button-grayedout {
 	width: 240px;
 	height: 40px;
@@ -13095,7 +13102,7 @@ div.v-layout.v-horizontal.v-widget {
 	font-weight: normal;
 	font-style: normal;
 	font-stretch: normal;
-	color: #34657f;
+	color: #7e8081;
 }
 
 .mytheme .v-combobox-mandatory .v-filterselect-input {
@@ -13108,16 +13115,24 @@ div.v-layout.v-horizontal.v-widget {
 	font-weight: normal;
 	font-style: normal;
 	font-stretch: normal;
-	color: #7e8081;
+	color: #34657f;
 }
 
 .mytheme .v-filterselect-v-combobox-normal.v-filterselect-focus .v-filterselect-input, .mytheme .v-filterselect-v-combobox-mandatory.v-filterselect-focus .v-filterselect-input {
-	color: #535658 !important;
+	color: #535658;
 	opacity: 0.2;
+}
+
+.mytheme .v-combobox-mandatory {
+	color: #34657f;
 }
 
 .mytheme .v-caption-v-combobox-mandatory {
 	color: #34657f;
+}
+
+.mytheme .v-caption-v-combobox-mandatory .v-icon {
+	font-size: 6px;
 }
 
 .mytheme .textfield-common, .mytheme .v-textfield-normal, .mytheme .v-textfield-mandatory {
@@ -13128,13 +13143,31 @@ div.v-layout.v-horizontal.v-widget {
 	color: #7e8081;
 }
 
-.mytheme .v-caption-v-textfield-mandatory {
+.mytheme .v-textfield-mandatory {
+	opacity: 1 !important;
 	color: #34657f !important;
 }
 
+.mytheme .v-caption-v-textfield-mandatory .v-icon {
+	font-size: 6px;
+}
+
 .mytheme .v-textfield-prompt {
-	color: #7e8081;
-	opacity: 0.2 !important;
+	color: #7e8081 !important;
+	opacity: 0.2;
+}
+
+.mytheme .v-textfield-mandatory.v-textfield-prompt {
+	color: #34657f !important;
+	opacity: 1;
+}
+
+.mytheme .v-textfield-mandatory.v-textfield-focus {
+	color: #34657f !important;
+}
+
+.mytheme .v-caption-v-textfield-mandatory {
+	color: #34657f !important;
 }
 
 .mytheme .v-datefield-normal .v-datefield-calendarpanel-day.v-datefield-calendarpanel-day-selected, .mytheme .v-datefield-mandatory .v-datefield-calendarpanel-day.v-datefield-calendarpanel-day-selected {
@@ -13205,6 +13238,14 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .mytheme .v-caption-v-datefield-mandatory {
+	color: #34657f;
+}
+
+.mytheme .v-caption-v-datefield-mandatory .v-icon {
+	font-size: 6px;
+}
+
+.mytheme .v-datefield-mandatory .v-datefield-textfield {
 	color: #34657f;
 }
 

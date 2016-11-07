@@ -44,6 +44,13 @@ $tree_item_width: 200px;
     color: $ui_gray;
   }
 
+  .mandatory-caption-bullet {
+    width: 6px !important;
+    height: 6px !important;
+    border-radius: 4px;
+    background-color: $ui_blue;
+  }
+
   //* BUTTONS *//
 
   .button-common {
@@ -166,7 +173,7 @@ $tree_item_width: 200px;
     font-weight: normal;
     font-style: normal;
     font-stretch: normal;
-    color: $ui_blue;
+    color: $ui_gray;
   }
 
   .v-caption-v-combobox-normal {
@@ -183,22 +190,26 @@ $tree_item_width: 200px;
     font-weight: normal;
     font-style: normal;
     font-stretch: normal;
-    color: $ui_gray;
+    color: $ui_blue;
   }
 
   .v-filterselect-v-combobox-normal.v-filterselect-focus .v-filterselect-input, .v-filterselect-v-combobox-mandatory.v-filterselect-focus .v-filterselect-input {
-    color: $dark_gray !important;
+    color: $dark_gray;
     opacity: 0.20;
   }
 
   .v-combobox-mandatory {
     @extend .combobox-common;
-
+    color: $ui_blue;
   }
 
   .v-caption-v-combobox-mandatory {
     @extend .caption-small;
     color: $ui_blue;
+  }
+
+  .v-caption-v-combobox-mandatory .v-icon {
+    font-size: 6px;
   }
 
   /* TEXTFIELDS */
@@ -222,6 +233,26 @@ $tree_item_width: 200px;
 
   .v-textfield-mandatory {
     @extend .textfield-common;
+    opacity: 1 !important;
+    color: $ui_blue !important;
+  }
+
+  .v-caption-v-textfield-mandatory .v-icon {
+    font-size: 6px;
+  }
+
+  .v-textfield-prompt {
+    color: $ui_gray !important;
+    opacity: 0.20;
+  }
+
+  .v-textfield-mandatory.v-textfield-prompt {
+    color: $ui_blue !important;
+    opacity: 1;
+  }
+
+  .v-textfield-mandatory.v-textfield-focus {
+    color: $ui_blue !important;
   }
 
   .v-caption-v-textfield-mandatory {
@@ -229,10 +260,7 @@ $tree_item_width: 200px;
     color: $ui_blue !important;
   }
 
-  .v-textfield-prompt {
-    color: $ui_gray;
-    opacity: 0.20 !important;
-  }
+
 
   /** DATEFIELD**/
 
@@ -316,6 +344,14 @@ $tree_item_width: 200px;
 
   .v-caption-v-datefield-mandatory {
     @extend .caption-small;
+    color: $ui_blue;
+  }
+
+  .v-caption-v-datefield-mandatory .v-icon {
+    font-size: 6px;
+  }
+
+  .v-datefield-mandatory .v-datefield-textfield {
     color: $ui_blue;
   }
 
@@ -416,7 +452,6 @@ $tree_item_width: 200px;
   .v-menubar-normal .v-menubar-menuitem:hover .v-menubar-menuitem-caption {
     color: white;
   }
-
 
   .v-caption-v-menubar-normal {
     width: 86px;
